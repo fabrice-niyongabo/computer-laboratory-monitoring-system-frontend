@@ -2,7 +2,7 @@ import React, { useEffect, useState, createRef } from "react";
 
 import { CRow, CCol, CCard, CCardHeader, CCardBody } from "@coreui/react";
 
-const Users = () => {
+const RegisterLaptop = () => {
   return (
     <>
       <div className="row">
@@ -56,4 +56,4 @@ const Users = () => {
   );
 };
 
-export default Users;
+export default RegisterLaptop;
