@@ -50,7 +50,7 @@ const _nav = [
       {
         component: CNavItem,
         name: "Register Laptops",
-        to: "/register-laptops",
+        to: "/register-laptop",
       },
       {
         component: CNavItem,
