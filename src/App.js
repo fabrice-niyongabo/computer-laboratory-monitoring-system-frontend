@@ -37,7 +37,7 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<Login />} />
-        <Route exact path="/dashboard" element={<DefaultLayout />} />
+        <Route exact path="*" element={<DefaultLayout />} />
       </Routes>
     </BrowserRouter>
   )

@@ -1,5 +1,5 @@
-import React from 'react'
-import CIcon from '@coreui/icons-react'
+import React from "react";
+import CIcon from "@coreui/icons-react";
 import {
   cilBell,
   cilCalculator,
@@ -12,19 +12,19 @@ import {
   cilPuzzle,
   cilSpeedometer,
   cilStar,
-} from '@coreui/icons'
-import { CNavGroup, CNavItem, CNavTitle } from '@coreui/react'
+} from "@coreui/icons";
+import { CNavGroup, CNavItem, CNavTitle } from "@coreui/react";
 
 const _nav = [
   {
     component: CNavItem,
-    name: 'Dashboard',
-    to: '/dashboard',
+    name: "Dashboard",
+    to: "/dashboard",
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
   },
   {
     component: CNavTitle,
-    name: 'SYSTEM USERS',
+    name: "SYSTEM USERS",
   },
   // {
   //   component: CNavItem,
@@ -34,8 +34,8 @@ const _nav = [
   // },
   {
     component: CNavItem,
-    name: 'Manage Users',
-    to: '/dashboard',
+    name: "Manage Users",
+    to: "/users",
     icon: <CIcon icon={cilPencil} customClassName="nav-icon" />,
   },
   // {
@@ -44,27 +44,27 @@ const _nav = [
   // },
   {
     component: CNavGroup,
-    name: 'Laptops',
+    name: "Laptops",
     icon: <CIcon icon={cilNotes} customClassName="nav-icon" />,
     items: [
       {
         component: CNavItem,
-        name: 'Register Laptops',
-        to: '/#',
+        name: "Register Laptops",
+        to: "/register-laptops",
       },
       {
         component: CNavItem,
-        name: 'Asign Laptops',
-        to: '/#',
+        name: "Asign Laptops",
+        to: "/#",
       },
     ],
   },
   {
     component: CNavItem,
-    name: 'Reports',
-    to: '/#',
+    name: "Reports",
+    to: "/#",
     icon: <CIcon icon={cilChartPie} customClassName="nav-icon" />,
   },
-]
+];
 
-export default _nav
+export default _nav;
