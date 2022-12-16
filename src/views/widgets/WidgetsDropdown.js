@@ -9,7 +9,7 @@ const WidgetsDropdown = () => {
           className="mb-4 pb-4"
           color="primary"
           value={<>26</>}
-          title="Cows in the system"
+          title="PCs in the system"
         />
       </CCol>
       <CCol sm={6} lg={3}>
@@ -17,7 +17,7 @@ const WidgetsDropdown = () => {
           className="mb-4 pb-4"
           color="info"
           value={<>62</>}
-          title="Served citizens"
+          title="Served Pcs"
         />
       </CCol>
       <CCol sm={6} lg={3}>
@@ -33,7 +33,7 @@ const WidgetsDropdown = () => {
           className="mb-4 pb-4"
           color="danger"
           value={<>44</>}
-          title="Claims"
+          title="Damaged PCs"
         />
       </CCol>
     </CRow>

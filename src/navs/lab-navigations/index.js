@@ -36,7 +36,7 @@ const _nav = [
     items: [
       {
         component: CNavItem,
-        name: "Cow Report",
+        name: "RTB PC Report",
         to: "/bbbb",
       },
     ],
