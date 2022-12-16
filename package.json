@@ -1,14 +1,14 @@
 {
-  "name": "girinka-frontend",
+  "name": "computer-laboratory-monitoring-system-frontend",
   "version": "1.1.0",
-  "description": "",
+  "description": "A reliable system that will track usability of computers in public secondary school",
   "homepage": ".",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Wanziro/girinka-frontend.git"
+    "url": "git@github.com:Wanziro/computer-laboratory-monitoring-system-frontend.git"
   },
   "license": "MIT",
-  "author": "ninga.fab@gmail.com",
+  "author": "Fabrice Niyongabo ninga.fab@gmail.com",
   "scripts": {
     "build": "react-scripts build",
     "changelog": "auto-changelog --starting-version 4.4.0 --commit-limit false --hide-credit",
