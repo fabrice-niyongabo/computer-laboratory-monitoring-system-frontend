@@ -36,7 +36,7 @@ const AppSidebar = () => {
       }}
     >
       <CSidebarBrand className="d-none d-md-flex" to="/">
-        <img src={require("../assets/logo.png")} style={{ width: 70 }} />
+        <b>CLMS</b>
       </CSidebarBrand>
       <CSidebarNav>
         <SimpleBar>

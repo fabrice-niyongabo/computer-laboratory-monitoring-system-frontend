@@ -190,10 +190,11 @@ const Users = () => {
                     required
                   >
                     <option value="">Choose</option>
+                    <option value="reb">REB</option>
+                    <option value="rtb">RTB</option>
                     <option value="district">District</option>
                     <option value="sector">Sector</option>
-                    <option value="cell">Cell</option>
-                    <option value="village">Village</option>
+                    <option value="school">Cell</option>
                   </select>
                 </div>
                 {userRole === "district" && (
