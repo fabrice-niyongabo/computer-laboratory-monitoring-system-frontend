@@ -55,51 +55,11 @@ export const toastMessage = (type, message) => {
 };
 
 export const errorHandler = (error) => {
-  if (error?.response?.data?.msg) {
-    toastMessage("error", error.response.data.msg);
+  console.log(error);
+  if (error?.response?.data?.error) {
+    toastMessage("error", error.response.data.error);
   } else {
     toastMessage("error", error.message);
   }
   handleAuthError(error);
-};
-
-export const fetchCoordinates = () => {
-  return new Promise((resolve, reject) => {
-    try {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        // console.log("lt is :", position.coords.latitude);
-        // console.log("lg is :", position.coords.longitude);
-        resolve({
-          lat: position.coords.latitude,
-          long: position.coords.longitude,
-        });
-      });
-    } catch (error) {
-      reject(error);
-    }
-  });
-};
-const toRadians = (degree) => {
-  return (degree * Math.PI) / 180;
-};
-export const calCulateDistance = (
-  latitude1,
-  longitude1,
-  latitude2,
-  longitude2
-) => {
-  var R = 6371;
-  var deltaLatitude = toRadians(latitude2 - latitude1);
-  var deltaLongitude = toRadians(longitude2 - longitude1);
-  latitude1 = toRadians(latitude1);
-  latitude2 = toRadians(latitude2);
-  var a =
-    Math.sin(deltaLatitude / 2) * Math.sin(deltaLatitude / 2) +
-    Math.cos(latitude1) *
-      Math.cos(latitude2) *
-      Math.sin(deltaLongitude / 2) *
-      Math.sin(deltaLongitude / 2);
-  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  var d = R * c;
-  return d;
 };

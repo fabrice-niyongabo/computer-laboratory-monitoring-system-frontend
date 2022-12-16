@@ -1,8 +1,8 @@
 import {
-  SET_USER_FULL_NAME,
-  SET_USER_COMPANY_NAME,
+  SET_FNAME,
+  SET_LNAME,
+  SET_USER_DESTINATION,
   SET_USER_ROLE,
-  SET_USER_ROLE_ID,
   SET_USER_EMAIL,
   SET_USER_PHONE,
   SET_USER_TOKEN,
@@ -10,12 +10,12 @@ import {
 } from "../actions/user";
 
 const initialState = {
-  fullName: "",
-  companyName: "",
+  fName: "",
+  lName: "",
   phone: "",
   email: "",
   role: "",
-  roleId: "",
+  destination: "",
   token: "",
 };
 
@@ -32,14 +32,14 @@ const user = (state = initialState, action) => {
 
     case SET_USER_ROLE:
       return { ...state, role: action.payload };
-    case SET_USER_ROLE_ID:
-      return { ...state, roleId: action.payload };
 
-    case SET_USER_COMPANY_NAME:
-      return { ...state, companyName: action.payload };
+    case SET_USER_DESTINATION:
+      return { ...state, destination: action.payload };
 
-    case SET_USER_FULL_NAME:
-      return { ...state, fullName: action.payload };
+    case SET_FNAME:
+      return { ...state, fName: action.payload };
+    case SET_LNAME:
+      return { ...state, lName: action.payload };
 
     case RESET_USER:
       return initialState;

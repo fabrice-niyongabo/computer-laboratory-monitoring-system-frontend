@@ -21,12 +21,12 @@ import Axios from "axios";
 import { toastMessage } from "src/helpers";
 import { BACKEND_URL } from "src/constants";
 import {
-  setuserCompanyName,
+  setFname,
+  setLname,
+  setuserDestination,
   setUserEmail,
-  setUserFullName,
   setUserPhone,
   setUserRole,
-  setUserRoleId,
   setUserToken,
 } from "src/actions/user";
 
@@ -43,17 +43,17 @@ const Login = () => {
       toastMessage("error", "All fields are required");
     } else {
       setIsLoading(true);
-      Axios.post(BACKEND_URL + "/users/login", {
+      Axios.post(BACKEND_URL + "/auth/login/", {
         email,
         password,
       })
         .then((res) => {
-          dispatch(setUserFullName(res.data.fullName));
+          dispatch(setFname(res.data.firstname));
+          dispatch(setLname(res.data.lastname));
           dispatch(setUserPhone(res.data.phone));
           dispatch(setUserEmail(res.data.email));
-          dispatch(setuserCompanyName(res.data.companyName));
-          dispatch(setUserRole(res.data.role));
-          dispatch(setUserRoleId(res.data.roleId));
+          dispatch(setuserDestination(res.data.destination));
+          dispatch(setUserRole(res.data.userRole));
           dispatch(setUserToken(res.data.token));
           setIsLoading(false);
           navigate("/dashboard");
@@ -61,8 +61,8 @@ const Login = () => {
         .catch((error) => {
           setIsLoading(false);
           setPassword("");
-          if (error.response.data.msg) {
-            toastMessage("error", error.response.data.msg);
+          if (error.response.data.error) {
+            toastMessage("error", error.response.data.error);
           } else {
             toastMessage("error", "Something went wrong. Try again later");
           }

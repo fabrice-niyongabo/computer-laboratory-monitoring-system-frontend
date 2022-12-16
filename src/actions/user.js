@@ -1,22 +1,29 @@
-export const SET_USER_FULL_NAME = "SET_USER_FULL_NAME";
+export const SET_FNAME = "SET_FIRST_NAME";
+export const SET_LNAME = "SET_LAST_NAME";
 export const SET_USER_PHONE = "SET_USER_PHONE";
 export const SET_USER_EMAIL = "SET_USER_EMAIL";
-export const SET_USER_COMPANY_NAME = "SET_USER_COMPANY_NAME";
+export const SET_USER_DESTINATION = "SET_USER_DESTINATION";
 export const SET_USER_ROLE = "SET_USER_ROLE";
-export const SET_USER_ROLE_ID = "SET_USER_ROLE_ID";
 export const SET_USER_TOKEN = "SET_USER_TOKEN";
 export const RESET_USER = "RESET_USER";
 
-export const setUserFullName = (names) => (dispatch) => {
+export const setFname = (names) => (dispatch) => {
   dispatch({
-    type: SET_USER_FULL_NAME,
+    type: SET_FNAME,
     payload: names,
   });
 };
 
-export const setuserCompanyName = (name) => (dispatch) => {
+export const setLname = (names) => (dispatch) => {
   dispatch({
-    type: SET_USER_COMPANY_NAME,
+    type: SET_LNAME,
+    payload: names,
+  });
+};
+
+export const setuserDestination = (name) => (dispatch) => {
+  dispatch({
+    type: SET_USER_DESTINATION,
     payload: name,
   });
 };
@@ -32,13 +39,6 @@ export const setUserRole = (role) => (dispatch) => {
   dispatch({
     type: SET_USER_ROLE,
     payload: role,
-  });
-};
-
-export const setUserRoleId = (id) => (dispatch) => {
-  dispatch({
-    type: SET_USER_ROLE_ID,
-    payload: id,
   });
 };
 
