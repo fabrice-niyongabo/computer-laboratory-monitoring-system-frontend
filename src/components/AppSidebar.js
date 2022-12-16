@@ -18,12 +18,13 @@ import SimpleBar from "simplebar-react";
 import "simplebar/dist/simplebar.min.css";
 
 // sidebar nav config
-import navigation from "../_nav";
+import labNav from "../navs/lab-navigations/";
+import { setShowSideBar, setUnfoldableSideBar } from "src/actions/app";
 
 const AppSidebar = () => {
   const dispatch = useDispatch();
-  const unfoldable = useSelector((state) => state.sidebarUnfoldable);
-  const sidebarShow = useSelector((state) => state.sidebarShow);
+  const { sidebarShow, unfoldable } = useSelector((state) => state.app);
+  const { role } = useSelector((state) => state.user);
 
   return (
     <CSidebar
@@ -31,23 +32,20 @@ const AppSidebar = () => {
       unfoldable={unfoldable}
       visible={sidebarShow}
       onVisibleChange={(visible) => {
-        dispatch({ type: "set", sidebarShow: visible });
+        dispatch(setShowSideBar(visible));
       }}
     >
       <CSidebarBrand className="d-none d-md-flex" to="/">
-        <h2 className="m-0">CLMS</h2>
-        <CIcon className="sidebar-brand-narrow" icon={sygnet} height={35} />
+        <img src={require("../assets/logo.png")} style={{ width: 70 }} />
       </CSidebarBrand>
       <CSidebarNav>
         <SimpleBar>
-          <AppSidebarNav items={navigation} />
+          {role === "admin" && <AppSidebarNav items={labNav} />}
         </SimpleBar>
       </CSidebarNav>
       <CSidebarToggler
         className="d-none d-lg-flex"
-        onClick={() =>
-          dispatch({ type: "set", sidebarUnfoldable: !unfoldable })
-        }
+        onClick={() => dispatch(setUnfoldableSideBar(!unfoldable))}
       />
     </CSidebar>
   );

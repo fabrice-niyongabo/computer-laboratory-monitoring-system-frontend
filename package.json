@@ -1,19 +1,21 @@
 {
-  "name": "computer-laboratory-monitoring-system-frontend",
-  "version": "4.4.0",
-  "description": "A reliable system that will track usability of computers in public secondary school",
+  "name": "girinka-frontend",
+  "version": "1.1.0",
+  "description": "",
   "homepage": ".",
   "repository": {
     "type": "git",
-    "url": "git@github.com:Wanziro/computer-laboratory-monitoring-system-frontend.git"
+    "url": "git@github.com:Wanziro/girinka-frontend.git"
   },
   "license": "MIT",
-  "author": "Fabrice Niyongabo ninga.fab@gmail.com",
+  "author": "ninga.fab@gmail.com",
   "scripts": {
     "build": "react-scripts build",
+    "changelog": "auto-changelog --starting-version 4.4.0 --commit-limit false --hide-credit",
     "eject": "react-scripts eject",
     "lint": "eslint \"src/**/*.js\"",
-    "start": "react-scripts start",
+    "start": "env-cmd -f ./.env.dev react-scripts start",
+    "start:production": "env-cmd -f ./.env.production react-scripts start",
     "test": "react-scripts test",
     "test:cov": "npm test -- --coverage --watchAll=false",
     "test:debug": "react-scripts --inspect-brk test --runInBand"
@@ -26,16 +28,22 @@
     "@coreui/react": "^4.3.1",
     "@coreui/react-chartjs": "^2.1.0",
     "@coreui/utils": "^1.3.1",
+    "axios": "^1.2.1",
     "chart.js": "^3.9.1",
     "classnames": "^2.3.1",
     "core-js": "^3.24.1",
+    "env-cmd": "^10.1.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-app-polyfill": "^3.0.0",
     "react-dom": "^18.2.0",
+    "react-fullpage-custom-loader": "^0.1.6",
     "react-redux": "^8.0.2",
     "react-router-dom": "^6.3.0",
+    "react-toastify": "^9.1.1",
     "redux": "4.2.0",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.4.2",
     "simplebar-react": "^2.4.1"
   },
   "devDependencies": {
