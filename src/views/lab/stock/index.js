@@ -14,7 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setShowFullPageLoader } from "src/actions/app";
 import PlaceHolder from "src/components/placeholder";
 
-const Users = () => {
+const Stock = () => {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.user);
   const [userRole, setUserRole] = useState("");
@@ -472,4 +472,4 @@ const Users = () => {
   );
 };
 
-export default Users;
+export default Stock;

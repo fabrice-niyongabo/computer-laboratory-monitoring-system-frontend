@@ -55,8 +55,9 @@ export const toastMessage = (type, message) => {
 };
 
 export const errorHandler = (error) => {
-  console.log(error);
-  if (error?.response?.data?.error) {
+  if (error?.response?.data?.error?.message) {
+    toastMessage("error", error.response.data.error.message);
+  } else if (error?.response?.data?.error) {
     toastMessage("error", error.response.data.error);
   } else {
     toastMessage("error", error.message);
