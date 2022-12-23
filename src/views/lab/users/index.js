@@ -13,6 +13,8 @@ import { BACKEND_URL } from "src/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowFullPageLoader } from "src/actions/app";
 import PlaceHolder from "src/components/placeholder";
+import CIcon from "@coreui/icons-react";
+import { cilDelete, cilTrash } from "@coreui/icons";
 
 const Users = () => {
   const dispatch = useDispatch();
@@ -84,14 +86,16 @@ const Users = () => {
 
   const fetchUsers = () => {
     setIsLoading(true);
-    Axios.get(BACKEND_URL + "/auth/?token=" + token)
+    Axios.get(BACKEND_URL + "/auth/users/?token=" + token)
       .then((res) => {
-        setIsLoading(false);
-        setUsersList(res.data.users);
+        setTimeout(() => {
+          setIsLoading(false);
+          setUsersList(res.data.users);
+        }, 1000);
         console.log(res.data);
       })
       .catch((error) => {
-        console.log(error);
+        setIsLoading(false);
         errorHandler(error);
       });
   };
@@ -130,7 +134,11 @@ const Users = () => {
                           <td>{item.email}</td>
                           <td>{item.phone}</td>
                           <td>{item.role}</td>
-                          <td></td>
+                          <td>
+                            <button className="btn btn-danger">
+                              <CIcon icon={cilTrash} />
+                            </button>
+                          </td>
                         </tr>
                       ))}
                     </tbody>
