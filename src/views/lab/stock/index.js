@@ -13,9 +13,10 @@ import { useDispatch, useSelector } from "react-redux";
 import PlaceHolder from "src/components/placeholder";
 import Axios from "axios";
 import CIcon from "@coreui/icons-react";
-import { cilPen, cilTrash } from "@coreui/icons";
+import { cilPen, cilSend, cilTrash } from "@coreui/icons";
 import EditPc from "./edit-pc";
 import { setShowFullPageLoader } from "src/actions/app";
+import TransferPc from "./transfer-pc";
 const Stock = () => {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.user);
@@ -23,7 +24,9 @@ const Stock = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [pcList, setPcList] = useState([]);
   const [showModal, setShowModal] = useState(false);
+  const [showTransferModal, setShowTransferModal] = useState(false);
   const [selectedPc, setSelectedPc] = useState(null);
+  const [pcsToSend, setPcsToSend] = useState([]);
 
   useEffect(() => {
     fetchPcs();
@@ -60,6 +63,22 @@ const Stock = () => {
       });
   };
 
+  const handleSelectAll = (e) => {
+    if (e.target.checked) {
+      setPcsToSend(pcList.filter((item) => item.isTransfered == false));
+    } else {
+      setPcsToSend([]);
+    }
+  };
+
+  const handleSelect = (e, item) => {
+    if (e.target.checked) {
+      setPcsToSend([...pcsToSend, item]);
+    } else {
+      setPcsToSend(pcsToSend.filter((i) => i._id !== item._id));
+    }
+  };
+
   return (
     <>
       <CRow>
@@ -70,7 +89,16 @@ const Stock = () => {
                 <div>
                   <strong>Stock Details</strong>
                 </div>
-                <div></div>
+                <div>
+                  {pcsToSend.length > 0 && (
+                    <button
+                      className="btn btn-light"
+                      onClick={() => setShowTransferModal(true)}
+                    >
+                      Transfer ({pcsToSend.length})
+                    </button>
+                  )}
+                </div>
               </div>
             </CCardHeader>
             <CCardBody>
@@ -82,7 +110,11 @@ const Stock = () => {
                     <thead>
                       <tr>
                         <th>
-                          <input type="checkbox" className="form-check" />
+                          <input
+                            type="checkbox"
+                            onChange={(e) => handleSelectAll(e)}
+                            className="form-check"
+                          />
                         </th>
                         <th>#</th>
                         <th>Serial Number</th>
@@ -98,7 +130,17 @@ const Stock = () => {
                       {pcList.map((item, index) => (
                         <tr key={index}>
                           <th>
-                            <input type="checkbox" className="form-check" />
+                            <input
+                              type="checkbox"
+                              className="form-check"
+                              disabled={item.isTransfered}
+                              onClick={(e) => handleSelect(e, item)}
+                              checked={
+                                pcsToSend.find((i) => i._id == item._id)
+                                  ? true
+                                  : false
+                              }
+                            />
                           </th>
                           <td>{index + 1}</td>
                           <td>{item.serialNumber}</td>
@@ -146,6 +188,14 @@ const Stock = () => {
         selectedPc={selectedPc}
         token={token}
         fetchPcs={fetchPcs}
+      />
+      <TransferPc
+        showModal={showTransferModal}
+        setShowModal={setShowTransferModal}
+        pcsToSend={pcsToSend}
+        fetchPcs={fetchPcs}
+        token={token}
+        setPcsToSend={setPcsToSend}
       />
     </>
   );
