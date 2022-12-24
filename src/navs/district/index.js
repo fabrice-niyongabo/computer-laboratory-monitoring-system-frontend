@@ -48,19 +48,6 @@ const _nav = [
     to: "/notifications",
     icon: <CIcon icon={cilBell} customClassName="nav-icon" />,
   },
-  {
-    component: CNavGroup,
-    name: "Reports",
-    to: "/reports",
-    icon: <CIcon icon={cilGraph} customClassName="nav-icon" />,
-    items: [
-      {
-        component: CNavItem,
-        name: "RTB PC Report",
-        to: "/bbbb",
-      },
-    ],
-  },
 ];
 
 export default _nav;
