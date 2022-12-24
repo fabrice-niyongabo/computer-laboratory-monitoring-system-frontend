@@ -29,8 +29,8 @@ function TransferPc({
     try {
       for (let i = 0; i < pcsToSend.length; i++) {
         const res = await Axios.post(BACKEND_URL + "/pc/sendDevice/", {
-          pcId: pcsToSend[i],
-          instutition: institution,
+          pcId: pcsToSend[i]._id,
+          institution,
           token,
         });
         setSentPcs([...sentPcs, res.data]);
