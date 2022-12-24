@@ -5,6 +5,7 @@ import { CContainer, CSpinner } from "@coreui/react";
 // routes config
 import labRoutes from "../sub-routes/lab";
 import rebRtbRoutes from "../sub-routes/reb_rtb";
+import districtRoutes from "../sub-routes/district";
 import { useSelector } from "react-redux";
 
 const AppContent = () => {
@@ -17,6 +18,9 @@ const AppContent = () => {
     }
     if (role === "REB" || role === "RTB") {
       setRoutesToUse(rebRtbRoutes);
+    }
+    if (role === "district") {
+      setRoutesToUse(districtRoutes);
     }
   }, [role]);
   return (
