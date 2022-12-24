@@ -48,7 +48,7 @@ const Users = () => {
       const destination =
         userRole == "RTB" || userRole == "REB"
           ? userRole
-          : `${institution}-${district.trim() !== "" ? "-" + district : ""}${
+          : `${institution}${district.trim() !== "" ? "-" + district : ""}${
               sector.trim() !== "" ? "-" + sector : ""
             }${cell.trim() !== "" ? "-" + cell : ""}${
               village.trim() !== "" ? "-" + village : ""

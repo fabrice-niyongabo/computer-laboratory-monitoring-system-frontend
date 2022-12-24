@@ -9,15 +9,11 @@ import {
 } from "@coreui/react";
 import { errorHandler, toastMessage } from "src/helpers";
 import { BACKEND_URL } from "src/constants";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import PlaceHolder from "src/components/placeholder";
 import Axios from "axios";
-import CIcon from "@coreui/icons-react";
-import { cilPen, cilSend, cilTrash } from "@coreui/icons";
-import { setShowFullPageLoader } from "src/actions/app";
 import TransferPc from "./transfer-pc";
 const Stock = () => {
-  const dispatch = useDispatch();
   const { token, role } = useSelector((state) => state.user);
 
   const mainPath = role.toLowerCase();
@@ -48,7 +44,9 @@ const Stock = () => {
 
   const handleSelectAll = (e) => {
     if (e.target.checked) {
-      setPcsToSend(pcList.filter((item) => item.isTransfered == false));
+      setPcsToSend(
+        pcList.filter((item) => item.isTransfered == false && item.isReceived)
+      );
     } else {
       setPcsToSend([]);
     }
@@ -155,7 +153,9 @@ const Stock = () => {
         pcsToSend={pcsToSend}
         fetchPcs={fetchPcs}
         token={token}
+        role={role}
         setPcsToSend={setPcsToSend}
+        mainPath={mainPath}
       />
     </>
   );
