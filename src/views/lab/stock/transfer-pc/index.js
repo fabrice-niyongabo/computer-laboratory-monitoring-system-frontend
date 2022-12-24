@@ -66,6 +66,10 @@ function TransferPc({
             <CModalTitle>Confirm Computer(s) Transfer</CModalTitle>
           </CModalHeader>
           <CModalBody>
+            <small>
+              You are going to transfer {pcsToSend.length} computer(s), please
+              choose destination
+            </small>
             <div className="mb-3">
               <label>Destination</label>
               <select

@@ -46,7 +46,7 @@ const Users = () => {
     } else {
       dispatch(setShowFullPageLoader(true));
       const destination =
-        userRole == "rtb" || userRole == "reb"
+        userRole == "RTB" || userRole == "REB"
           ? userRole
           : `${institution}-${district.trim() !== "" ? "-" + district : ""}${
               sector.trim() !== "" ? "-" + sector : ""
@@ -92,7 +92,6 @@ const Users = () => {
           setIsLoading(false);
           setUsersList(res.data.users);
         }, 1000);
-        console.log(res.data);
       })
       .catch((error) => {
         setIsLoading(false);

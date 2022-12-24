@@ -134,7 +134,7 @@ const Stock = () => {
                               type="checkbox"
                               className="form-check"
                               disabled={item.isTransfered}
-                              onClick={(e) => handleSelect(e, item)}
+                              onChange={(e) => handleSelect(e, item)}
                               checked={
                                 pcsToSend.find((i) => i._id == item._id)
                                   ? true
