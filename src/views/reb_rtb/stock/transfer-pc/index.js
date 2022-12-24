@@ -24,7 +24,7 @@ function TransferPc({
   mainPath,
 }) {
   const [submitting, setSubmitting] = useState(false);
-  const [sentPcs, setSentPcs] = useState([]);
+  const [sentPcs, setSentPcs] = useState(0);
   const [loadingUsers, setLoadingUsers] = useState(false);
   const [districts, setDistricts] = useState([]);
   const [institution, setInstitution] = useState("");
@@ -41,7 +41,7 @@ function TransferPc({
             token,
           }
         );
-        setSentPcs([...sentPcs, res.data]);
+        setSentPcs(i + 1);
       }
       setTimeout(() => {
         toastMessage("success", "Computer(s) Transfered!");
@@ -59,7 +59,7 @@ function TransferPc({
   useEffect(() => {
     setDistricts([]);
     if (showModal) {
-      setSentPcs([]);
+      setSentPcs(0);
       fetchusers();
     }
   }, [showModal]);
@@ -67,15 +67,17 @@ function TransferPc({
   const fetchusers = async () => {
     try {
       setLoadingUsers(true);
+      const dstcts = [];
       const res = await Axios.get(BACKEND_URL + "/auth/users/?token=" + token);
       for (let i = 0; i < res.data.users.length; i++) {
         const dest = res.data.users[i].destination.split("-");
         if (dest.length === 2) {
           if (dest[0].toUpperCase() === role.toUpperCase()) {
-            setDistricts([...districts, dest[1]]);
+            dstcts.push(dest[1]);
           }
         }
       }
+      setDistricts(dstcts);
       setTimeout(() => {
         setLoadingUsers(false);
       }, 1000);
@@ -130,7 +132,7 @@ function TransferPc({
               disabled={submitting}
             >
               {submitting && <CSpinner size="sm" />} Transfer{" "}
-              {submitting && `${sentPcs.length}/${pcsToSend.length}`}
+              {submitting && `${sentPcs}/${pcsToSend.length}`}
             </button>
           </CModalFooter>
         </form>

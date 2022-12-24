@@ -21,7 +21,7 @@ function TransferPc({
   setPcsToSend,
 }) {
   const [submitting, setSubmitting] = useState(false);
-  const [sentPcs, setSentPcs] = useState([]);
+  const [sentPcs, setSentPcs] = useState(0);
   const [institution, setInstitution] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,7 +33,7 @@ function TransferPc({
           institution,
           token,
         });
-        setSentPcs([...sentPcs, res.data]);
+        setSentPcs(i + 1);
       }
       setTimeout(() => {
         toastMessage("success", "Computer(s) Transfered!");
@@ -50,7 +50,7 @@ function TransferPc({
 
   useEffect(() => {
     if (showModal) {
-      setSentPcs([]);
+      setSentPcs(0);
     }
   }, [showModal]);
 
@@ -90,7 +90,7 @@ function TransferPc({
               disabled={submitting}
             >
               {submitting && <CSpinner size="sm" />} Transfer{" "}
-              {submitting && `${sentPcs.length}/${pcsToSend.length}`}
+              {submitting && `${sentPcs}/${pcsToSend.length}`}
             </button>
           </CModalFooter>
         </form>
