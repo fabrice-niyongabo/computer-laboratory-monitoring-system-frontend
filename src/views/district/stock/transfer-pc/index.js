@@ -25,7 +25,6 @@ function TransferPc({
   const { token } = user;
   const [submitting, setSubmitting] = useState(false);
   const [sentPcs, setSentPcs] = useState(0);
-  const [loadingUsers, setLoadingUsers] = useState(false);
   const [districts, setDistricts] = useState([]);
   const [institution, setInstitution] = useState("");
   const handleSubmit = async (e) => {
@@ -57,38 +56,10 @@ function TransferPc({
   };
 
   useEffect(() => {
-    setDistricts([]);
     if (showModal) {
       setSentPcs(0);
-      fetchusers();
     }
   }, [showModal]);
-
-  const fetchusers = async () => {
-    try {
-      setLoadingUsers(true);
-      const dstcts = [];
-      const currentUserFinalDestination = user.destination.split("-")[1];
-      const res = await Axios.get(BACKEND_URL + "/auth/users/?token=" + token);
-      for (let i = 0; i < res.data.users.length; i++) {
-        const dest = res.data.users[i].destination.split("-");
-        if (dest.length === 3) {
-          if (
-            dest[1].toUpperCase() === currentUserFinalDestination.toUpperCase()
-          ) {
-            dstcts.push(dest[2]);
-          }
-        }
-      }
-      setDistricts(dstcts);
-      setTimeout(() => {
-        setLoadingUsers(false);
-      }, 1000);
-    } catch (error) {
-      setLoadingUsers(false);
-      errorHandler(error);
-    }
-  };
 
   return (
     <>
@@ -102,31 +73,25 @@ function TransferPc({
             <CModalTitle>Confirm Computer(s) Transfer</CModalTitle>
           </CModalHeader>
           <CModalBody>
-            {loadingUsers ? (
-              <PlaceHolder />
-            ) : (
-              <>
-                <small>
-                  You are going to transfer {pcsToSend.length} computer(s),
-                  please choose destination
-                </small>
-                <div className="mb-3">
-                  <label>{user.destination.toUpperCase()}-Sectors</label>
-                  <select
-                    className="form-select"
-                    onChange={(e) => setInstitution(e.target.value)}
-                    required
-                  >
-                    <option value="">Choose</option>
-                    {districts.map((item, index) => (
-                      <option key={index} value={item}>
-                        {item}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </>
-            )}
+            <small>
+              You are going to transfer {pcsToSend.length} computer(s), please
+              choose destination
+            </small>
+            <div className="mb-3">
+              <label>{user.destination.toUpperCase()}-Sectors</label>
+              <select
+                className="form-select"
+                onChange={(e) => setInstitution(e.target.value)}
+                required
+              >
+                <option value="">Choose</option>
+                {districts.map((item, index) => (
+                  <option key={index} value={item}>
+                    {item}
+                  </option>
+                ))}
+              </select>
+            </div>
           </CModalBody>
           <CModalFooter>
             <button

@@ -53,9 +53,11 @@ const Users = () => {
       const destination =
         userRole == "RTB" || userRole == "REB"
           ? userRole
-          : `${institution}${district.trim() !== "" ? "-" + district : ""}${
-              sector.trim() !== "" ? "-" + sector : ""
-            }${schoolName.trim() !== "" ? "-" + schoolName : ""}`;
+          : `${institution}${province.trim() !== "" ? "-" + province : ""}${
+              district.trim() !== "" ? "-" + district : ""
+            }${sector.trim() !== "" ? "-" + sector : ""}${
+              schoolName.trim() !== "" ? "-" + schoolName : ""
+            }`;
       Axios.post(BACKEND_URL + "/auth/register/", {
         firstname,
         lastname,
@@ -63,7 +65,7 @@ const Users = () => {
         password: "123456",
         phone,
         role: userRole,
-        destination: destination.toUpperCase(),
+        destination: destination.trim(),
         token,
       })
         .then((res) => {
@@ -87,6 +89,22 @@ const Users = () => {
     fetchUsers();
     setProvincesList(Provinces());
   }, []);
+
+  const handleDelete = (id) => {
+    dispatch(setShowFullPageLoader(true));
+    Axios.delete(BACKEND_URL + "/auth/users/" + id + "/?token=" + token)
+      .then((res) => {
+        setTimeout(() => {
+          dispatch(setShowFullPageLoader(false));
+          toastMessage("success", "User deleted!");
+          fetchUsers();
+        }, 1000);
+      })
+      .catch((error) => {
+        dispatch(setShowFullPageLoader(false));
+        errorHandler(error);
+      });
+  };
 
   const fetchUsers = () => {
     setIsLoading(true);
@@ -138,7 +156,10 @@ const Users = () => {
                           <td>{item.phone}</td>
                           <td>{item.role}</td>
                           <td>
-                            <button className="btn btn-danger">
+                            <button
+                              className="btn btn-danger"
+                              onClick={() => handleDelete(item._id)}
+                            >
                               <CIcon icon={cilTrash} />
                             </button>
                           </td>
