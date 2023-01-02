@@ -18,6 +18,7 @@ import labNav from "../navs/lab-navigations/";
 import rebRtbNav from "../navs/reb_rtb";
 import districtNav from "../navs/district";
 import sectorNav from "../navs/sector";
+import schoolNav from "../navs/school";
 import { setShowSideBar, setUnfoldableSideBar } from "src/actions/app";
 
 const AppSidebar = () => {
@@ -45,6 +46,7 @@ const AppSidebar = () => {
           )}
           {role === "district" && <AppSidebarNav items={districtNav} />}
           {role === "sector" && <AppSidebarNav items={sectorNav} />}
+          {role === "school" && <AppSidebarNav items={schoolNav} />}
         </SimpleBar>
       </CSidebarNav>
       <CSidebarToggler
