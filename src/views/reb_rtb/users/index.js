@@ -55,7 +55,7 @@ const Users = () => {
       // }${district.trim() !== "" ? "-" + district : ""}${
       //   sector.trim() !== "" ? "-" + sector : ""
       // }${schoolName.trim() !== "" ? "-" + schoolName : ""}`;
-      const destination = `${province.trim() !== "" ? "-" + province : ""}${
+      const destination = `${province.trim() !== "" ? province : ""}${
         district.trim() !== "" ? "-" + district : ""
       }${sector.trim() !== "" ? "-" + sector : ""}${
         schoolName.trim() !== "" ? "-" + schoolName : ""
