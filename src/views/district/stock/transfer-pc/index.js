@@ -11,7 +11,7 @@ import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { BACKEND_URL } from "src/constants";
 import { errorHandler, toastMessage } from "src/helpers";
-import PlaceHolder from "src/components/placeholder";
+import { Sectors } from "rwanda";
 
 function TransferPc({
   showModal,
@@ -22,11 +22,11 @@ function TransferPc({
   setPcsToSend,
   mainPath,
 }) {
-  const { token } = user;
+  const { token, destination } = user;
   const [submitting, setSubmitting] = useState(false);
   const [sentPcs, setSentPcs] = useState(0);
-  const [districts, setDistricts] = useState([]);
   const [institution, setInstitution] = useState("");
+  const dest = destination.split("-");
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
@@ -85,7 +85,7 @@ function TransferPc({
                 required
               >
                 <option value="">Choose</option>
-                {districts.map((item, index) => (
+                {Sectors(dest[0], dest[1]).map((item, index) => (
                   <option key={index} value={item}>
                     {item}
                   </option>

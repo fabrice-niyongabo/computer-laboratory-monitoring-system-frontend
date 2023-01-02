@@ -6,14 +6,16 @@ const Dashboard = lazy(() => import("../../views/dashboard"));
 const Notifications = lazy(() => import("../../views/notifications"));
 const Profile = lazy(() => import("../../views/profile"));
 const Stock = lazy(() => import("../../views/reb_rtb/stock"));
-const PendingPcs = lazy(() => import("../../views/reb_rtb/pending-pcs"));
+const Users = lazy(() => import("../../views/reb_rtb/users"));
+const AddPc = lazy(() => import("../../views/reb_rtb/addpc"));
 
 const routes = [
   { path: "/", exact: true, name: "Home" },
   { path: "/dashboard", name: "Dashboard", element: Dashboard },
   { path: "/profile", name: "Profile", element: Profile },
   { path: "/stock", name: "Stock", element: Stock },
-  { path: "/pendingpcs", name: "PendingPcs", element: PendingPcs },
+  { path: "/users", name: "Users", element: Users },
+  { path: "/addpc", name: "Stock", element: AddPc },
   {
     path: "/notifications",
     name: "Notifications",

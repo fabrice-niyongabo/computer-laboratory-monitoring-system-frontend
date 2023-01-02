@@ -20,8 +20,41 @@ const Stock = () => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [pcList, setPcList] = useState([]);
+  const [allPcList, setAllPcList] = useState([]);
   const [showTransferModal, setShowTransferModal] = useState(false);
   const [pcsToSend, setPcsToSend] = useState([]);
+
+  const [keyWord, setKeyword] = useState("");
+  const [typeFilter, setTypeFilter] = useState("");
+  const [statusFilter, setStatusFilter] = useState("");
+  const [dateFilter, setDateFilter] = useState("");
+
+  useEffect(() => {
+    let res = allPcList;
+    if (keyWord.trim() !== "") {
+      res = allPcList.filter(
+        (item) =>
+          item.pcDetails.serialNumber
+            .toLowerCase()
+            .includes(keyWord.toLowerCase()) ||
+          item.pcDetails.model.toLowerCase().includes(keyWord.toLowerCase())
+      );
+    }
+    if (typeFilter !== "") {
+      res = res.filter((item) => item.pcDetails.type === typeFilter);
+    }
+    if (statusFilter !== "") {
+      res = res.filter((item) => item.isTransfered.toString() === statusFilter);
+    }
+    if (dateFilter !== "") {
+      res = res.filter(
+        (item) =>
+          new Date(item.createdAt).toLocaleDateString() ===
+          new Date(dateFilter).toLocaleDateString()
+      );
+    }
+    setPcList(res);
+  }, [keyWord, typeFilter, statusFilter, dateFilter, allPcList]);
 
   useEffect(() => {
     fetchPcs();
@@ -34,6 +67,7 @@ const Stock = () => {
         setTimeout(() => {
           setIsLoading(false);
           setPcList(res.data.data);
+          setAllPcList(res.data.data);
         }, 1000);
       })
       .catch((error) => {
@@ -70,14 +104,52 @@ const Stock = () => {
                 <div>
                   <strong>Stock Details</strong>
                 </div>
-                <div>
+                <div className="d-flex justify-content-between">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Search"
+                    value={keyWord}
+                    onChange={(e) => setKeyword(e.target.value)}
+                  />
+                  <div>&nbsp; &nbsp;</div>
+                  <select
+                    className="form-select"
+                    value={typeFilter}
+                    onChange={(e) => setTypeFilter(e.target.value)}
+                  >
+                    <option value="">Choose</option>
+                    <option value="Laptop">Laptop</option>
+                    <option value="Desktop">Desktop</option>
+                  </select>
+                  <div>&nbsp; &nbsp;</div>
+                  <select
+                    className="form-select"
+                    value={statusFilter}
+                    onChange={(e) => setStatusFilter(e.target.value)}
+                  >
+                    <option value="">Choose</option>
+                    <option value="true">Transfered</option>
+                    <option value="false">Not Transfered</option>
+                  </select>
+                  <div>&nbsp; &nbsp;</div>
+                  <input
+                    type="date"
+                    className="form-control"
+                    placeholder="date"
+                    value={dateFilter}
+                    onChange={(e) => setDateFilter(e.target.value)}
+                  />
                   {pcsToSend.length > 0 && (
-                    <button
-                      className="btn btn-light"
-                      onClick={() => setShowTransferModal(true)}
-                    >
-                      Transfer ({pcsToSend.length})
-                    </button>
+                    <>
+                      <div>&nbsp; &nbsp;</div>
+                      <button
+                        className="btn btn-light"
+                        onClick={() => setShowTransferModal(true)}
+                      >
+                        Transfer({pcsToSend.length})
+                      </button>
+                    </>
                   )}
                 </div>
               </div>

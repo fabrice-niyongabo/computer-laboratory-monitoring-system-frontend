@@ -39,7 +39,7 @@ const AppSidebar = () => {
       <CSidebarNav>
         <SimpleBar>
           {role === "admin" && <AppSidebarNav items={labNav} />}
-          {(role === "REB" || role === "RTB") && (
+          {(role === "reb" || role === "rtb") && (
             <AppSidebarNav items={rebRtbNav} />
           )}
           {role === "district" && <AppSidebarNav items={districtNav} />}

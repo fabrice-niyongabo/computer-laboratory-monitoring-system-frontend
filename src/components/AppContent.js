@@ -16,7 +16,7 @@ const AppContent = () => {
     if (role === "admin") {
       setRoutesToUse(labRoutes);
     }
-    if (role === "REB" || role === "RTB") {
+    if (role === "reb" || role === "rtb") {
       setRoutesToUse(rebRtbRoutes);
     }
     if (role === "district") {

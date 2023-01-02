@@ -6,6 +6,7 @@ import {
   cilBell,
   cilGraph,
   cilSpeedometer,
+  cilUser,
 } from "@coreui/icons";
 import { CNavGroup, CNavItem } from "@coreui/react";
 
@@ -15,6 +16,12 @@ const _nav = [
     name: "Dashboard",
     to: "/dashboard",
     icon: <CIcon icon={cilSpeedometer} customClassName="nav-icon" />,
+  },
+  {
+    component: CNavItem,
+    name: "System users",
+    to: "/users",
+    icon: <CIcon icon={cilUser} customClassName="nav-icon" />,
   },
   {
     component: CNavGroup,
@@ -27,18 +34,10 @@ const _nav = [
         name: "Stock Details",
         to: "/stock",
       },
-    ],
-  },
-  {
-    component: CNavGroup,
-    name: "Pending PCs",
-    to: "/pendingpcs",
-    icon: <CIcon icon={cilAvTimer} customClassName="nav-icon" />,
-    items: [
       {
         component: CNavItem,
-        name: "Awaiting List",
-        to: "/pendingpcs",
+        name: "Add PC",
+        to: "/addpc",
       },
     ],
   },

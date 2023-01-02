@@ -11,7 +11,7 @@ import React, { useEffect, useState } from "react";
 import Axios from "axios";
 import { BACKEND_URL } from "src/constants";
 import { errorHandler, toastMessage } from "src/helpers";
-import PlaceHolder from "src/components/placeholder";
+import { Districts, Provinces } from "rwanda";
 
 function TransferPc({
   showModal,
@@ -19,14 +19,13 @@ function TransferPc({
   pcsToSend,
   fetchPcs,
   token,
-  role,
   setPcsToSend,
-  mainPath,
+  role,
 }) {
   const [submitting, setSubmitting] = useState(false);
   const [sentPcs, setSentPcs] = useState(0);
-  const [loadingUsers, setLoadingUsers] = useState(false);
   const [districts, setDistricts] = useState([]);
+  const [province, setProvince] = useState("");
   const [institution, setInstitution] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,10 +33,11 @@ function TransferPc({
     try {
       for (let i = 0; i < pcsToSend.length; i++) {
         const res = await Axios.post(
-          BACKEND_URL + "/" + mainPath + "/sendDevice/",
+          BACKEND_URL + "/" + role + "/sendDevice/",
           {
-            pcId: pcsToSend[i].pcId,
-            district: institution,
+            pcId: pcsToSend[i]._id,
+            institution,
+            province,
             token,
           }
         );
@@ -57,35 +57,10 @@ function TransferPc({
   };
 
   useEffect(() => {
-    setDistricts([]);
     if (showModal) {
       setSentPcs(0);
-      fetchusers();
     }
   }, [showModal]);
-
-  const fetchusers = async () => {
-    try {
-      setLoadingUsers(true);
-      const dstcts = [];
-      const res = await Axios.get(BACKEND_URL + "/auth/users/?token=" + token);
-      for (let i = 0; i < res.data.users.length; i++) {
-        const dest = res.data.users[i].destination.split("-");
-        if (dest.length === 2) {
-          if (dest[0].toUpperCase() === role.toUpperCase()) {
-            dstcts.push(dest[1]);
-          }
-        }
-      }
-      setDistricts(dstcts);
-      setTimeout(() => {
-        setLoadingUsers(false);
-      }, 1000);
-    } catch (error) {
-      setLoadingUsers(false);
-      errorHandler(error);
-    }
-  };
 
   return (
     <>
@@ -99,31 +74,39 @@ function TransferPc({
             <CModalTitle>Confirm Computer(s) Transfer</CModalTitle>
           </CModalHeader>
           <CModalBody>
-            {loadingUsers ? (
-              <PlaceHolder />
-            ) : (
-              <>
-                <small>
-                  You are going to transfer {pcsToSend.length} computer(s),
-                  please choose destination
-                </small>
-                <div className="mb-3">
-                  <label>District</label>
-                  <select
-                    className="form-select"
-                    onChange={(e) => setInstitution(e.target.value)}
-                    required
-                  >
-                    <option value="">Choose</option>
-                    {districts.map((item, index) => (
-                      <option key={index} value={item}>
-                        {item}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </>
-            )}
+            <small>
+              You are going to transfer {pcsToSend.length} computer(s), please
+              choose destination
+            </small>
+            <div className="mb-3">
+              <label>Province</label>
+              <select
+                className="form-select"
+                onChange={(e) => {
+                  setProvince(e.target.value);
+                  setDistricts(Districts(e.target.value));
+                }}
+                required
+              >
+                <option value="">Choose</option>
+                {Provinces().map((item, index) => (
+                  <option key={index}>{item}</option>
+                ))}
+              </select>
+            </div>
+            <div className="mb-3">
+              <label>District</label>
+              <select
+                className="form-select"
+                onChange={(e) => setInstitution(e.target.value)}
+                required
+              >
+                <option value="">Choose</option>
+                {districts.map((item, index) => (
+                  <option key={index}>{item}</option>
+                ))}
+              </select>
+            </div>
           </CModalBody>
           <CModalFooter>
             <button
