@@ -36,7 +36,8 @@ function TransferPc({
           BACKEND_URL + "/" + mainPath + "/sendDevice/",
           {
             pcId: pcsToSend[i].pcId,
-            sector: institution,
+            school: institution,
+            district: dest[1],
             token,
           }
         );
@@ -78,19 +79,13 @@ function TransferPc({
               choose destination
             </small>
             <div className="mb-3">
-              <label>{user.destination.toUpperCase()}-Sectors</label>
-              <select
-                className="form-select"
+              <label>{user.destination.toUpperCase()}-Schools</label>
+              <input
+                type="text"
+                className="form-control"
                 onChange={(e) => setInstitution(e.target.value)}
                 required
-              >
-                <option value="">Choose</option>
-                {Sectors(dest[0], dest[1]).map((item, index) => (
-                  <option key={index} value={item}>
-                    {item}
-                  </option>
-                ))}
-              </select>
+              />
             </div>
           </CModalBody>
           <CModalFooter>

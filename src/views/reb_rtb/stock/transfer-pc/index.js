@@ -27,6 +27,7 @@ function TransferPc({
   const [districts, setDistricts] = useState([]);
   const [province, setProvince] = useState("");
   const [institution, setInstitution] = useState("");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
@@ -36,7 +37,7 @@ function TransferPc({
           BACKEND_URL + "/" + role + "/sendDevice/",
           {
             pcId: pcsToSend[i]._id,
-            institution,
+            district: institution,
             province,
             token,
           }
