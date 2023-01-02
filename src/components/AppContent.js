@@ -6,6 +6,7 @@ import { CContainer, CSpinner } from "@coreui/react";
 import labRoutes from "../sub-routes/lab";
 import rebRtbRoutes from "../sub-routes/reb_rtb";
 import districtRoutes from "../sub-routes/district";
+import sectorRoutes from "../sub-routes/sector";
 import { useSelector } from "react-redux";
 
 const AppContent = () => {
@@ -21,6 +22,9 @@ const AppContent = () => {
     }
     if (role === "district") {
       setRoutesToUse(districtRoutes);
+    }
+    if (role === "sector") {
+      setRoutesToUse(sectorRoutes);
     }
   }, [role]);
   return (
