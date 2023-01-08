@@ -61,9 +61,9 @@ function Printer() {
       }
     }
     setData(res);
-    // setTimeout(() => {
-    //   window.print();
-    // }, 500);
+    setTimeout(() => {
+      window.print();
+    }, 500);
   };
 
   console.log(data);
