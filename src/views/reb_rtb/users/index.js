@@ -55,11 +55,18 @@ const Users = () => {
       // }${district.trim() !== "" ? "-" + district : ""}${
       //   sector.trim() !== "" ? "-" + sector : ""
       // }${schoolName.trim() !== "" ? "-" + schoolName : ""}`;
-      const destination = `${province.trim() !== "" ? province : ""}${
-        district.trim() !== "" ? "-" + district : ""
-      }${sector.trim() !== "" ? "-" + sector : ""}${
-        schoolName.trim() !== "" ? "-" + schoolName : ""
-      }`;
+      const destination =
+        userRole == "school"
+          ? `${role}${province.trim() !== "" ? "-" + province : ""}${
+              district.trim() !== "" ? "-" + district : ""
+            }${sector.trim() !== "" ? "-" + sector : ""}${
+              schoolName.trim() !== "" ? "-" + schoolName : ""
+            }`
+          : `${province.trim() !== "" ? province : ""}${
+              district.trim() !== "" ? "-" + district : ""
+            }${sector.trim() !== "" ? "-" + sector : ""}${
+              schoolName.trim() !== "" ? "-" + schoolName : ""
+            }`;
       Axios.post(BACKEND_URL + "/auth/register/", {
         firstname,
         lastname,
