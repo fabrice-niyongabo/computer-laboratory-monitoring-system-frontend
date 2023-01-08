@@ -9,6 +9,7 @@ const Stock = lazy(() => import("../../views/school/stock"));
 const PendingPcs = lazy(() => import("../../views/school/pending-pcs"));
 const DamagedPcs = lazy(() => import("../../views/school/damaged-pcs"));
 const RepairedPcs = lazy(() => import("../../views/school/repaired-pcs"));
+const StolenPcs = lazy(() => import("../../views/school/stolen-pcs"));
 
 const routes = [
   { path: "/", exact: true, name: "Home" },
@@ -18,6 +19,7 @@ const routes = [
   { path: "/pendingpcs", name: "PendingPcs", element: PendingPcs },
   { path: "/damagedpcs", name: "DamagedPcs", element: DamagedPcs },
   { path: "/repairedpcs", name: "DamagedPcs", element: RepairedPcs },
+  { path: "/stolenpcs", name: "StolenPcs", element: StolenPcs },
   {
     path: "/notifications",
     name: "Notifications",
