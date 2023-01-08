@@ -143,8 +143,9 @@ function EditPc({
                     pattern="07[8,2,3,9]{1}[0-9]{7}"
                     title="Invalid Phone (MTN or Airtel-tigo phone number)"
                     onChange={(e) =>
-                      setState({ ...state, techEmail: e.target.value })
+                      setState({ ...state, techPhone: e.target.value })
                     }
+                    value={state.techPhone}
                     required={state.status === "repaired"}
                   />
                 </div>
