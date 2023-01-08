@@ -78,7 +78,8 @@ function Printer() {
         <h1 style={{ display: "inline-block", borderBottom: "2px solid #000" }}>
           Computer Labaratory Management System
           <br />-{route.includes("damaged") && "Damaged Devices"}
-          {route.includes("repaire") && "Repaired Devices"} Report-
+          {route.includes("repaire") && "Repaired Devices"}
+          {route.includes("stolen") && "Stolen Devices"} Report-
         </h1>
       </div>
 
@@ -103,6 +104,16 @@ function Printer() {
               <th>School Name</th>
               <th>Description</th>
               <th>Repaired Date</th>
+            </tr>
+          )}
+          {route.includes("stolen") && (
+            <tr>
+              <th>#</th>
+              <th>Address</th>
+              <th>Device Details</th>
+              <th>School Name</th>
+              <th>Description</th>
+              <th>Stolen Date</th>
             </tr>
           )}
         </thead>
@@ -190,6 +201,43 @@ function Printer() {
                 <td>{item.school.toUpperCase()}</td>
                 <td>{item.description}</td>
                 <td>{new Date(item.repairedDate).toLocaleDateString()}</td>
+              </tr>
+            ))}
+          {route.includes("stolen") &&
+            data.map((item, index) => (
+              <tr key={index}>
+                <td>{index + 1}</td>
+                <td>
+                  <p className="m-0">
+                    <b>Institution:</b> {item.institution.toUpperCase()}
+                  </p>
+                  <p className="m-0">
+                    <b>Province:</b> {item.province.toUpperCase()}
+                  </p>
+                  <p className="m-0">
+                    <b>District:</b> {item.district.toUpperCase()}
+                  </p>
+                  <p className="m-0">
+                    <b>Sector:</b> {item.sector.toUpperCase()}
+                  </p>
+                </td>
+                <td>
+                  <p className="m-0">
+                    <b>SN:</b> {item.pcDetails.serialNumber}
+                  </p>
+                  <p className="m-0">
+                    <b>Model:</b> {item.pcDetails.model}
+                  </p>
+                  <p className="m-0">
+                    <b>Type:</b> {item.pcDetails.type}
+                  </p>
+                  <p className="m-0">
+                    <b>Description:</b> {item.pcDetails?.description}
+                  </p>
+                </td>
+                <td>{item.school.toUpperCase()}</td>
+                <td>{item.description}</td>
+                <td>{new Date(item.stolen).toLocaleDateString()}</td>
               </tr>
             ))}
         </tbody>
