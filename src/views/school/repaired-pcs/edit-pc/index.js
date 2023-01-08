@@ -33,7 +33,7 @@ function EditPc({
     setSubmitting(true);
     try {
       const res = await Axios.put(
-        BACKEND_URL + "/" + mainPath + "/damagedPc/" + selectedPc._id,
+        BACKEND_URL + "/" + mainPath + "/repairedPc/" + selectedPc._id,
         {
           ...state,
           token,

@@ -33,7 +33,7 @@ function EditPc({
     setSubmitting(true);
     try {
       const res = await Axios.put(
-        BACKEND_URL + "/" + mainPath + "/stolenPc/" + selectedPc._id,
+        BACKEND_URL + "/" + mainPath + "/archievedPc/" + selectedPc._id,
         {
           ...state,
           token,
