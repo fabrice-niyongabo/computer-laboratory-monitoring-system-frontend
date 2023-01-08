@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import PlaceHolder from "src/components/placeholder";
 import Axios from "axios";
 import EditPc from "./edit-pc";
+import { Link } from "react-router-dom";
 const RepairedPcs = () => {
   const user = useSelector((state) => state.user);
   const { token, role } = user;
@@ -111,7 +112,12 @@ const RepairedPcs = () => {
                     onChange={(e) => setDateFilter(e.target.value)}
                   />
                   <div>&nbsp; &nbsp;</div>
-                  <button className="btn btn-primary">Print</button>
+                  <Link
+                    to={`/printer/repairedPc/?repairedDate=${dateFilter}&pcDetails__serialNumber=${keyWord}&description=${keyWord}&pcDetails__model=${keyWord}&technician__techNames=${keyWord}`}
+                    target="_blank"
+                  >
+                    <button className="btn btn-primary">Print</button>
+                  </Link>
                 </div>
               </div>
             </CCardHeader>
