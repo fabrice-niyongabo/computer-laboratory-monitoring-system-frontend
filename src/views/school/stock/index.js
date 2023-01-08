@@ -12,6 +12,7 @@ import { BACKEND_URL } from "src/constants";
 import { useSelector } from "react-redux";
 import PlaceHolder from "src/components/placeholder";
 import Axios from "axios";
+import EditPc from "./edit-pc";
 const Stock = () => {
   const user = useSelector((state) => state.user);
   const { token, role } = user;
@@ -22,6 +23,8 @@ const Stock = () => {
   const [allPcList, setAllPcList] = useState([]);
   const [showTransferModal, setShowTransferModal] = useState(false);
   const [pcsToSend, setPcsToSend] = useState([]);
+
+  const [selectedPc, setSelectedPc] = useState({});
 
   const [keyWord, setKeyword] = useState("");
   const [typeFilter, setTypeFilter] = useState("");
@@ -142,6 +145,7 @@ const Stock = () => {
                         <th>Lifespan</th>
                         <th>Status</th>
                         <th>Date</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -158,6 +162,17 @@ const Stock = () => {
                             <td>
                               {new Date(item.createdAt).toLocaleDateString()}
                             </td>
+                            <td>
+                              <button
+                                className="btn btn-primary"
+                                onClick={() => {
+                                  setShowTransferModal(true);
+                                  setSelectedPc(item);
+                                }}
+                              >
+                                Edit
+                              </button>
+                            </td>
                           </tr>
                         ))}
                     </tbody>
@@ -168,6 +183,14 @@ const Stock = () => {
           </CCard>
         </CCol>
       </CRow>
+      <EditPc
+        showModal={showTransferModal}
+        setShowModal={setShowTransferModal}
+        selectedPc={selectedPc}
+        token={token}
+        mainPath={mainPath}
+        fetchPcs={fetchPcs}
+      />
     </>
   );
 };
