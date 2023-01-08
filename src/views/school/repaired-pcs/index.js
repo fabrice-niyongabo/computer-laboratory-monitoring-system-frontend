@@ -110,6 +110,8 @@ const RepairedPcs = () => {
                     value={dateFilter}
                     onChange={(e) => setDateFilter(e.target.value)}
                   />
+                  <div>&nbsp; &nbsp;</div>
+                  <button className="btn btn-primary">Print</button>
                 </div>
               </div>
             </CCardHeader>
@@ -143,10 +145,10 @@ const RepairedPcs = () => {
                               Names: {item?.technician?.techNames}
                             </p>
                             <p className="m-0 p-0">
-                              {item?.technician?.techEmail}
+                              Email: {item?.technician?.techEmail}
                             </p>
                             <p className="m-0 p-0">
-                              {item?.technician?.techPhone}
+                              Phone: {item?.technician?.techPhone}
                             </p>
                           </td>
                           <td>

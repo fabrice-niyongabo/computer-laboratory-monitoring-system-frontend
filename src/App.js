@@ -5,6 +5,7 @@ import ProtectedRoute from "./components/controllers/protected-route";
 import UnProtectedRoute from "./components/controllers/un-protected-route";
 import "./scss/style.scss";
 import Logout from "./views/pages/logout";
+import Printer from "./views/printer";
 
 const loading = (
   <div className="pt-3 text-center">
@@ -34,6 +35,18 @@ class App extends Component {
                     <Login />
                   </Suspense>
                 </UnProtectedRoute>
+              }
+            />
+            <Route
+              exact
+              path="/printer/:route"
+              name="printer"
+              element={
+                <ProtectedRoute>
+                  <Suspense fallback={loading}>
+                    <Printer />
+                  </Suspense>
+                </ProtectedRoute>
               }
             />
             <Route exact path="/logout" element={<Logout />} />
