@@ -42,12 +42,12 @@ const _nav = [
       },
     ],
   },
-  {
-    component: CNavItem,
-    name: "Notifications",
-    to: "/notifications",
-    icon: <CIcon icon={cilBell} customClassName="nav-icon" />,
-  },
+  // {
+  //   component: CNavItem,
+  //   name: "Notifications",
+  //   to: "/notifications",
+  //   icon: <CIcon icon={cilBell} customClassName="nav-icon" />,
+  // },
 ];
 
 export default _nav;

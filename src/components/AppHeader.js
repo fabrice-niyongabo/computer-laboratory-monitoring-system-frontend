@@ -22,6 +22,7 @@ import { setShowSideBar } from "src/actions/app";
 const AppHeader = () => {
   const dispatch = useDispatch();
   const { sidebarShow } = useSelector((state) => state.app);
+  const { fName } = useSelector((state) => state.user);
 
   return (
     <CHeader position="sticky" className="mb-4">
@@ -45,9 +46,10 @@ const AppHeader = () => {
         </CHeaderNav>
         <CHeaderNav>
           <CNavItem>
-            <CNavLink href="#">
+            {/* <CNavLink href="#">
               <CIcon icon={cilBell} size="lg" />
-            </CNavLink>
+            </CNavLink> */}
+            {fName}
           </CNavItem>
         </CHeaderNav>
         <CHeaderNav className="ms-3">

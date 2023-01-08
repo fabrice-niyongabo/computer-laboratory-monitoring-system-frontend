@@ -12,6 +12,7 @@ import { BACKEND_URL } from "src/constants";
 import { useSelector } from "react-redux";
 import PlaceHolder from "src/components/placeholder";
 import Axios from "axios";
+import EditPc from "./edit-pc";
 const DamagedPcs = () => {
   const user = useSelector((state) => state.user);
   const { token, role } = user;
@@ -23,6 +24,8 @@ const DamagedPcs = () => {
   const [showTransferModal, setShowTransferModal] = useState(false);
   const [pcsToSend, setPcsToSend] = useState([]);
 
+  const [selectedPc, setSelectedPc] = useState({});
+
   const [keyWord, setKeyword] = useState("");
   const [typeFilter, setTypeFilter] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
@@ -33,22 +36,17 @@ const DamagedPcs = () => {
     if (keyWord.trim() !== "") {
       res = allPcList.filter(
         (item) =>
-          item.pcDetails.serialNumber
-            .toLowerCase()
+          item?.pcDetails?.serialNumber
+            ?.toLowerCase()
             .includes(keyWord.toLowerCase()) ||
-          item.pcDetails.model.toLowerCase().includes(keyWord.toLowerCase())
+          item.description.toLowerCase().includes(keyWord.toLowerCase()) ||
+          item?.pcDetails?.model?.toLowerCase().includes(keyWord.toLowerCase())
       );
-    }
-    if (typeFilter !== "") {
-      res = res.filter((item) => item.pcDetails.type === typeFilter);
-    }
-    if (statusFilter !== "") {
-      res = res.filter((item) => item.status === statusFilter);
     }
     if (dateFilter !== "") {
       res = res.filter(
         (item) =>
-          new Date(item.createdAt).toLocaleDateString() ===
+          new Date(item.damagedDate).toLocaleDateString() ===
           new Date(dateFilter).toLocaleDateString()
       );
     }
@@ -94,29 +92,6 @@ const DamagedPcs = () => {
                     onChange={(e) => setKeyword(e.target.value)}
                   />
                   <div>&nbsp; &nbsp;</div>
-                  <select
-                    className="form-select"
-                    value={typeFilter}
-                    onChange={(e) => setTypeFilter(e.target.value)}
-                  >
-                    <option value="">Choose</option>
-                    <option value="Laptop">Laptop</option>
-                    <option value="Desktop">Desktop</option>
-                  </select>
-                  <div>&nbsp; &nbsp;</div>
-                  <select
-                    className="form-select"
-                    value={statusFilter}
-                    onChange={(e) => setStatusFilter(e.target.value)}
-                  >
-                    <option value="">Choose</option>
-                    <option value="repaired">Repaired</option>
-                    <option value="working">Working</option>
-                    <option value="stolen">Stolen</option>
-                    <option value="archieved">Archieved</option>
-                    <option value="damaged">Damaged</option>
-                  </select>
-                  <div>&nbsp; &nbsp;</div>
                   <input
                     type="date"
                     className="form-control"
@@ -137,29 +112,33 @@ const DamagedPcs = () => {
                       <tr>
                         <th>#</th>
                         <th>Serial Number</th>
-                        <th>Model</th>
-                        <th>Type</th>
-                        <th>Lifespan</th>
-                        <th>Status</th>
                         <th>Date</th>
+                        <th>Description</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {pcList
-                        .filter((item) => item.isReceived)
-                        .map((item, index) => (
-                          <tr key={index}>
-                            <td>{index + 1}</td>
-                            <td>{item.pcDetails.serialNumber}</td>
-                            <td>{item.pcDetails.model}</td>
-                            <td>{item.pcDetails.type}</td>
-                            <td>{item.pcDetails.lifeSpan}</td>
-                            <td>{item.status}</td>
-                            <td>
-                              {new Date(item.createdAt).toLocaleDateString()}
-                            </td>
-                          </tr>
-                        ))}
+                      {pcList.map((item, index) => (
+                        <tr key={index}>
+                          <td>{index + 1}</td>
+                          <td>{item?.pcDetails?.serialNumber}</td>
+                          <td>
+                            {new Date(item.damagedDate).toLocaleDateString()}
+                          </td>
+                          <td>{item.description}</td>
+                          <td>
+                            <button
+                              className="btn btn-primary"
+                              onClick={() => {
+                                setShowTransferModal(true);
+                                setSelectedPc(item);
+                              }}
+                            >
+                              Edit
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
                     </tbody>
                   </table>
                 </div>
@@ -168,6 +147,14 @@ const DamagedPcs = () => {
           </CCard>
         </CCol>
       </CRow>
+      <EditPc
+        showModal={showTransferModal}
+        setShowModal={setShowTransferModal}
+        selectedPc={selectedPc}
+        token={token}
+        mainPath={mainPath}
+        fetchPcs={fetchPcs}
+      />
     </>
   );
 };

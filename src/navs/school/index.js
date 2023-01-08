@@ -56,11 +56,6 @@ const _nav = [
         name: "PC List",
         to: "/damagedpcs",
       },
-      {
-        component: CNavItem,
-        name: "Add New",
-        to: "/adddamagedpc",
-      },
     ],
   },
   {
@@ -71,8 +66,8 @@ const _nav = [
     items: [
       {
         component: CNavItem,
-        name: "Awaiting List",
-        to: "/pendingpcs",
+        name: "Pc List",
+        to: "/repairedpcs",
       },
     ],
   },
@@ -84,8 +79,8 @@ const _nav = [
     items: [
       {
         component: CNavItem,
-        name: "Awaiting List",
-        to: "/pendingpcs",
+        name: "Pc List",
+        to: "/stolenpcs",
       },
     ],
   },
@@ -97,17 +92,17 @@ const _nav = [
     items: [
       {
         component: CNavItem,
-        name: "Awaiting List",
-        to: "/pendingpcs",
+        name: "Pc List",
+        to: "/archivedpcs",
       },
     ],
   },
-  {
-    component: CNavItem,
-    name: "Notifications",
-    to: "/notifications",
-    icon: <CIcon icon={cilBell} customClassName="nav-icon" />,
-  },
+  // {
+  //   component: CNavItem,
+  //   name: "Notifications",
+  //   to: "/notifications",
+  //   icon: <CIcon icon={cilBell} customClassName="nav-icon" />,
+  // },
 ];
 
 export default _nav;
