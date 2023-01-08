@@ -14,7 +14,7 @@ import { errorHandler, toastMessage } from "src/helpers";
 import { useNavigate } from "react-router-dom";
 
 const initialState = {
-  stolenDate: "",
+  archievedDate: "",
   description: "",
 };
 function EditPc({
@@ -56,7 +56,7 @@ function EditPc({
     if (showModal) {
       setState({
         ...selectedPc,
-        stolenDate: new Date(selectedPc.stolenDate).toLocaleDateString(),
+        archievedDate: new Date(selectedPc.archievedDate).toLocaleDateString(),
       });
     }
   }, [showModal]);
@@ -86,13 +86,13 @@ function EditPc({
               />
             </div>
             <div className="mb-3">
-              <label>Stolen date</label>
+              <label>Archieved date</label>
               <input
                 type="date"
                 className="form-control"
-                value={state.stolenDate}
+                value={state.archievedDate}
                 onChange={(e) =>
-                  setState({ ...state, stolenDate: e.target.value })
+                  setState({ ...state, archievedDate: e.target.value })
                 }
                 required
               />
