@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import PlaceHolder from "src/components/placeholder";
 import Axios from "axios";
 import EditPc from "./edit-pc";
+import { Link } from "react-router-dom";
 const ArchivedPcs = () => {
   const user = useSelector((state) => state.user);
   const { token, role } = user;
@@ -99,6 +100,13 @@ const ArchivedPcs = () => {
                     value={dateFilter}
                     onChange={(e) => setDateFilter(e.target.value)}
                   />
+                  <div>&nbsp; &nbsp;</div>
+                  <Link
+                    to={`/printer/archievedPc/?archievedDate=${dateFilter}&pcDetails__serialNumber=${keyWord}&description=${keyWord}&pcDetails__model=${keyWord}`}
+                    target="_blank"
+                  >
+                    <button className="btn btn-primary">Print</button>
+                  </Link>
                 </div>
               </div>
             </CCardHeader>
