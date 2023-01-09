@@ -4,6 +4,7 @@ import {
   cibCodesandbox,
   cilAvTimer,
   cilBell,
+  cilFile,
   cilGraph,
   cilSpeedometer,
 } from "@coreui/icons";
@@ -43,11 +44,39 @@ const _nav = [
     ],
   },
   {
-    component: CNavItem,
-    name: "Notifications",
-    to: "/notifications",
-    icon: <CIcon icon={cilBell} customClassName="nav-icon" />,
+    component: CNavGroup,
+    name: "Reports",
+    to: "/ar",
+    icon: <CIcon icon={cilFile} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: "Archived Devices",
+        to: "/archivedpcs",
+      },
+      {
+        component: CNavItem,
+        name: "Damaged Devices",
+        to: "/damagedpcs",
+      },
+      {
+        component: CNavItem,
+        name: "Repaired Devices",
+        to: "/repairedpcs",
+      },
+      {
+        component: CNavItem,
+        name: "Stolen Devices",
+        to: "/stolenpcs",
+      },
+    ],
   },
+  // {
+  //   component: CNavItem,
+  //   name: "Notifications",
+  //   to: "/notifications",
+  //   icon: <CIcon icon={cilBell} customClassName="nav-icon" />,
+  // },
 ];
 
 export default _nav;
