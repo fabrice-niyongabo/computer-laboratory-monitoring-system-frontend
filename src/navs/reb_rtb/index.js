@@ -4,6 +4,7 @@ import {
   cibCodesandbox,
   cilAvTimer,
   cilBell,
+  cilFile,
   cilGraph,
   cilSpeedometer,
   cilUser,
@@ -38,6 +39,34 @@ const _nav = [
         component: CNavItem,
         name: "Add PC",
         to: "/addpc",
+      },
+    ],
+  },
+  {
+    component: CNavGroup,
+    name: "Reports",
+    to: "/ar",
+    icon: <CIcon icon={cilFile} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: "Archived Devices",
+        to: "/archivedpcs",
+      },
+      {
+        component: CNavItem,
+        name: "Damaged Devices",
+        to: "/damagedpcs",
+      },
+      {
+        component: CNavItem,
+        name: "Repaired Devices",
+        to: "/repairedpcs",
+      },
+      {
+        component: CNavItem,
+        name: "Stolen Devices",
+        to: "/stolenpcs",
       },
     ],
   },
