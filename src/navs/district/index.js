@@ -38,7 +38,7 @@ const _nav = [
     items: [
       {
         component: CNavItem,
-        name: "Awaiting List",
+        name: "Waiting List",
         to: "/pendingpcs",
       },
     ],

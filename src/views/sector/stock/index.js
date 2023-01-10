@@ -175,7 +175,7 @@ const Stock = () => {
                         <th>Type</th>
                         <th>Lifespan</th>
                         <th>Status</th>
-                        <th>Date</th>
+                        <th>Received Date</th>
                       </tr>
                     </thead>
                     <tbody>

@@ -127,7 +127,7 @@ const ArchivedPcs = () => {
                         <th>District</th>
                         <th>Sector</th>
                         <th>SchoolName</th>
-                        <th>Date</th>
+                        <th>Archieved Date</th>
                         <th>Description</th>
                       </tr>
                     </thead>

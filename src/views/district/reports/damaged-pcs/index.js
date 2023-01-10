@@ -123,7 +123,7 @@ const DamagedPcs = () => {
                         <th>Serial Number</th>
                         <th>Sector</th>
                         <th>SchoolName</th>
-                        <th>Date</th>
+                        <th>Damaged Date</th>
                         <th>Description</th>
                       </tr>
                     </thead>

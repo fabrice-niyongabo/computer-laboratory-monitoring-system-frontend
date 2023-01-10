@@ -125,7 +125,7 @@ const DamagedPcs = () => {
                         <th>District</th>
                         <th>Sector</th>
                         <th>SchoolName</th>
-                        <th>Date</th>
+                        <th>Damaged Date</th>
                         <th>Description</th>
                       </tr>
                     </thead>

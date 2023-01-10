@@ -134,7 +134,7 @@ const RepairedPcs = () => {
                         <th>Serial Number</th>
                         <th>Sector</th>
                         <th>School</th>
-                        <th>Date</th>
+                        <th>Repaired Date</th>
                         <th>Technician</th>
                         <th>Description</th>
                       </tr>
@@ -158,6 +158,9 @@ const RepairedPcs = () => {
                             </p>
                             <p className="m-0 p-0">
                               Phone: {item?.technician?.techPhone}
+                            </p>
+                            <p className="m-0 p-0">
+                              Company: {item?.technician?.companyName}
                             </p>
                           </td>
                           <td>{item.description}</td>

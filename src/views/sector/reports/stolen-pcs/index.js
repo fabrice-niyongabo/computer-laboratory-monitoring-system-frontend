@@ -121,7 +121,7 @@ const StolenPcs = () => {
                         <th>#</th>
                         <th>Serial Number</th>
                         <th>School</th>
-                        <th>Date</th>
+                        <th>Stolen Date</th>
                         <th>Description</th>
                       </tr>
                     </thead>

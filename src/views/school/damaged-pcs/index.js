@@ -120,7 +120,7 @@ const DamagedPcs = () => {
                       <tr>
                         <th>#</th>
                         <th>Serial Number</th>
-                        <th>Date</th>
+                        <th>Damaged Date</th>
                         <th>Description</th>
                         <th>Action</th>
                       </tr>

@@ -193,7 +193,7 @@ const Stock = () => {
                         <th>Lifespan</th>
                         <th>Description</th>
                         <th>Status</th>
-                        <th>Date</th>
+                        <th>Registered Date</th>
                         <th>Action</th>
                       </tr>
                     </thead>

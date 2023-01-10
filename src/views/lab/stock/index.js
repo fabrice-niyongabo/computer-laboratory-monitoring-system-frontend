@@ -122,7 +122,7 @@ const Stock = () => {
                         <th>Type</th>
                         <th>Lifespan</th>
                         <th>Status</th>
-                        <th>Date</th>
+                        <th>Registered Date</th>
                         <th>Action</th>
                       </tr>
                     </thead>

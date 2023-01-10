@@ -174,7 +174,7 @@ const PendingPcs = () => {
                         <th>Type</th>
                         <th>Lifespan</th>
                         <th>Status</th>
-                        <th>Date</th>
+                        <th>Delivered Date</th>
                       </tr>
                     </thead>
                     <tbody>

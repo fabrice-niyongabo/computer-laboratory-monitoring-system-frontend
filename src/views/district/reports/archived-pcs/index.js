@@ -125,7 +125,7 @@ const ArchivedPcs = () => {
                         <th>Serial Number</th>
                         <th>Sector</th>
                         <th>SchoolName</th>
-                        <th>Date</th>
+                        <th>Archieved Date</th>
                         <th>Description</th>
                       </tr>
                     </thead>
