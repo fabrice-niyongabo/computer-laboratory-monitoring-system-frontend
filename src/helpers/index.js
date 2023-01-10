@@ -1,12 +1,23 @@
 import { useDispatch } from "react-redux";
 import Axios from "axios";
 import { toast } from "react-toastify";
+import {
+  fetchArchieved,
+  fetchDamaged,
+  fetchRepaired,
+  fetchStock,
+  fetchStolen,
+} from "src/actions/app";
 
 //custom dispatcher hook
 export const useLoadBasicData = () => {
   const dispatch = useDispatch();
   return (payload) => {
-    // dispatch(fetchFacility());
+    dispatch(fetchStock());
+    dispatch(fetchDamaged());
+    dispatch(fetchRepaired());
+    dispatch(fetchStolen());
+    dispatch(fetchArchieved());
   };
 };
 
