@@ -191,6 +191,7 @@ const Stock = () => {
                         <th>Model</th>
                         <th>Type</th>
                         <th>Lifespan</th>
+                        <th>Description</th>
                         <th>Status</th>
                         <th>Date</th>
                         <th>Action</th>
@@ -217,6 +218,7 @@ const Stock = () => {
                           <td>{item.model}</td>
                           <td>{item.type}</td>
                           <td>{item.lifeSpan}</td>
+                          <td>{item.description}</td>
                           <td>
                             {item.isTransfered
                               ? "Transfered"

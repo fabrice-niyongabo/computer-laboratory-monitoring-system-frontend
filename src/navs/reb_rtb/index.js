@@ -37,7 +37,7 @@ const _nav = [
       },
       {
         component: CNavItem,
-        name: "Add PC",
+        name: "Add Device",
         to: "/addpc",
       },
     ],

@@ -13,7 +13,13 @@ import { BACKEND_URL } from "src/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { setShowFullPageLoader } from "src/actions/app";
 
-const initialState = { serialNumber: "", model: "", type: "", lifeSpan: "" };
+const initialState = {
+  serialNumber: "",
+  model: "",
+  type: "",
+  lifeSpan: "",
+  description: "",
+};
 const Stock = () => {
   const dispatch = useDispatch();
   const { token, role } = useSelector((state) => state.user);
@@ -31,7 +37,7 @@ const Stock = () => {
       })
         .then((res) => {
           setTimeout(() => {
-            toastMessage("success", "Computer added to the stock!");
+            toastMessage("success", "Device added to the stock!");
             dispatch(setShowFullPageLoader(false));
             setState(initialState);
           }, 1000);
@@ -53,7 +59,7 @@ const Stock = () => {
         <CCol md={12}>
           <CCard className="mb-4">
             <CCardHeader>
-              <strong>Register new pc</strong>
+              <strong>Register new device</strong>
             </CCardHeader>
             <CCardBody>
               <CRow>
@@ -76,7 +82,7 @@ const Stock = () => {
                     <label>Model</label>
                     <input
                       className="form-control"
-                      placeholder="Enter pc model"
+                      placeholder="Enter device model"
                       name="model"
                       value={state.model}
                       onChange={changeHandler}
@@ -116,9 +122,22 @@ const Stock = () => {
                   </div>
                 </CCol>
                 <CCol md={4}>
+                  <div className="mb-3">
+                    <label>Description</label>
+                    <textarea
+                      className="form-control"
+                      placeholder="Description"
+                      name="description"
+                      value={state.description}
+                      onChange={changeHandler}
+                      required
+                    />
+                  </div>
+                </CCol>
+                <CCol md={4}>
                   <div className="my-3">
                     <button type="submit" className="btn btn-primary">
-                      Save computer
+                      Save Device
                     </button>
                   </div>
                 </CCol>
