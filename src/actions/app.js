@@ -11,6 +11,7 @@ export const SET_DAMAGED = "SET_DAMAGED";
 export const SET_REPAIRED = "SET_REPAIRED";
 export const SET_STOLEN = "SET_STOLEN";
 export const SET_ARCHIEVED = "SET_ARCHIEVED";
+export const SET_WORKING = "SET_WORKING";
 
 export const setShowSideBar = (trueOrFalse) => (dispatch) => {
   dispatch({
@@ -67,6 +68,13 @@ export const setStolen = (data) => (dispatch) => {
   });
 };
 
+export const setWorking = (data) => (dispatch) => {
+  dispatch({
+    type: SET_WORKING,
+    payload: data,
+  });
+};
+
 export const setArchieved = (data) => (dispatch) => {
   dispatch({
     type: SET_ARCHIEVED,
@@ -104,6 +112,29 @@ export const fetchDamaged = () => (dispatch, getState) => {
   Axios.get(url)
     .then((res) => {
       dispatch(setDamaged(res.data.data));
+    })
+    .catch((error) => {
+      errorHandler(error);
+    });
+};
+
+export const fetchWorking = () => (dispatch, getState) => {
+  const { user } = getState();
+  const url =
+    user.role == "school"
+      ? BACKEND_URL +
+        "/" +
+        user.role.toLowerCase() +
+        "/workingPc?token=" +
+        user.token
+      : BACKEND_URL +
+        "/" +
+        user.role.toLowerCase() +
+        "/report/working?token=" +
+        user.token;
+  Axios.get(url)
+    .then((res) => {
+      dispatch(setWorking(res.data.data));
     })
     .catch((error) => {
       errorHandler(error);

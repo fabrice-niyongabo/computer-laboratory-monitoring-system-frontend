@@ -7,6 +7,7 @@ import {
   fetchRepaired,
   fetchStock,
   fetchStolen,
+  fetchWorking,
 } from "src/actions/app";
 
 //custom dispatcher hook
@@ -18,6 +19,7 @@ export const useLoadBasicData = () => {
     dispatch(fetchRepaired());
     dispatch(fetchStolen());
     dispatch(fetchArchieved());
+    dispatch(fetchWorking());
   };
 };
 
