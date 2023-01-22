@@ -19,6 +19,9 @@ const initialState = {
   type: "",
   lifeSpan: "",
   description: "",
+  isSponsored: false,
+  sponsoredBy: "",
+  manufacturedDate: "",
 };
 const Stock = () => {
   const dispatch = useDispatch();
@@ -104,6 +107,13 @@ const Stock = () => {
                       <option value="">Choose</option>
                       <option value="Laptop">Laptop</option>
                       <option value="Desktop">Desktop</option>
+                      <option value="Desktop">Printer</option>
+                      <option value="Desktop">Projector</option>
+                      <option value="Desktop">Scanner</option>
+                      <option value="Desktop">Router</option>
+                      <option value="Desktop">Switch</option>
+                      <option value="Desktop">WIFI Access Point</option>
+                      <option value="Desktop">Phone</option>
                     </select>
                   </div>
                 </CCol>
@@ -132,6 +142,45 @@ const Stock = () => {
                       onChange={changeHandler}
                       required
                     />
+                  </div>
+                </CCol>
+                <CCol md={4}>
+                  <div className="mb-3">
+                    <label>Manufactured Date</label>
+                    <input
+                      type="date"
+                      className="form-control"
+                      placeholder="Description"
+                      name="manufacturedDate"
+                      value={state.manufacturedDate}
+                      onChange={changeHandler}
+                      required
+                    />
+                  </div>
+                </CCol>
+                <CCol md={4}>
+                  <div className="mb-3">
+                    <input
+                      type="checkbox"
+                      onChange={(e) =>
+                        e.target.checked
+                          ? setState({ ...state, isSponsored: true })
+                          : setState({ ...state, isSponsored: false })
+                      }
+                    />
+                    &nbsp;
+                    <label>Is sponsored?</label>
+                    {state.isSponsored && (
+                      <input
+                        type="text"
+                        className="form-control"
+                        placeholder="Sponsored by"
+                        name="sponsoredBy"
+                        value={state.sponsoredBy}
+                        onChange={changeHandler}
+                        required={state.isSponsored}
+                      />
+                    )}
                   </div>
                 </CCol>
                 <CCol md={4}>
