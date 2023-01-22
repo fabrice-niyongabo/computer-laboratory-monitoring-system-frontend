@@ -239,7 +239,10 @@ const Stock = () => {
                             </button>{" "}
                             <button
                               className="btn btn-danger"
-                              onClick={() => handleDelete(item)}
+                              onClick={() =>
+                                confirm("Do you want to delete this device?") &&
+                                handleDelete(item)
+                              }
                             >
                               <CIcon icon={cilTrash} />
                             </button>
