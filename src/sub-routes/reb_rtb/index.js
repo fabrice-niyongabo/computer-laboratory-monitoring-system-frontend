@@ -18,6 +18,9 @@ const StolenPcs = lazy(() => import("../../views/reb_rtb/reports/stolen-pcs"));
 const ArchivedPcs = lazy(() =>
   import("../../views/reb_rtb/reports/archived-pcs")
 );
+const WorkingPcs = lazy(() =>
+  import("../../views/reb_rtb/reports/working-pcs")
+);
 
 const routes = [
   { path: "/", exact: true, name: "Home" },
@@ -30,6 +33,7 @@ const routes = [
   { path: "/repairedpcs", name: "DamagedPcs", element: RepairedPcs },
   { path: "/stolenpcs", name: "StolenPcs", element: StolenPcs },
   { path: "/archivedpcs", name: "ArchivedPcs", element: ArchivedPcs },
+  { path: "/workingpcs", name: "ArchivedPcs", element: WorkingPcs },
   {
     path: "/notifications",
     name: "Notifications",

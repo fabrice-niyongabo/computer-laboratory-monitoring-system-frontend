@@ -9,7 +9,7 @@ function Printer() {
   const [searchParams] = useSearchParams();
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
-  const { token, role } = useSelector((state) => state.user);
+  const { token, role, fName, lName } = useSelector((state) => state.user);
 
   const fetchData = () => {
     const rt = role === "school" ? route : "report/" + route;
@@ -66,8 +66,6 @@ function Printer() {
     }, 500);
   };
 
-  console.log(data);
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -83,7 +81,6 @@ function Printer() {
           {route.includes("archieve") && "Archieved Devices"} Report-
         </h1>
       </div>
-
       <table className="table table-bordered">
         <thead>
           {route.includes("damaged") && (
@@ -290,6 +287,14 @@ function Printer() {
             ))}
         </tbody>
       </table>
+      <b>
+        Done by: {fName} {lName}
+      </b>{" "}
+      <br />
+      <br />
+      <b>
+        Signature:.............................................................
+      </b>
     </div>
   );
 }

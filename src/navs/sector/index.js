@@ -69,6 +69,11 @@ const _nav = [
         name: "Stolen Devices",
         to: "/stolenpcs",
       },
+      {
+        component: CNavItem,
+        name: "Working Devices",
+        to: "/workingpcs",
+      },
     ],
   },
   // {
