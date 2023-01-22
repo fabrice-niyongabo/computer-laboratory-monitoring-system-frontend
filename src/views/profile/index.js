@@ -40,6 +40,8 @@ function Profile() {
 
   const handleChangePassword = (e) => {
     e.preventDefault();
+    if (newPassword !== confirmPassword)
+      toastMessage("error", "Passwords do not match.");
     dispatch(setShowFullPageLoader(true));
     Axios.put(BACKEND_URL + "/auth/updatepassword/", {
       newPassword,
