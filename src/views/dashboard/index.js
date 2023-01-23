@@ -11,6 +11,7 @@ const Dashboard = () => {
   const { damaged, stolen, archieved, repaired, working } = useSelector(
     (state) => state.app
   );
+  const { role } = useSelector((state) => state.user);
   const loadData = useLoadBasicData();
   useEffect(() => {
     loadData();
@@ -59,6 +60,23 @@ const Dashboard = () => {
             </CCardBody>
           </CCard>
         </div>
+        {(role === "reb" || role === "rtb") && (
+          <div className="col-md-6">
+            <CCard className="mb-4">
+              <CCardBody>
+                <img
+                  alt=""
+                  src={
+                    role === "reb"
+                      ? require("../../assets/reb.png")
+                      : require("../../assets/rtb.png")
+                  }
+                  style={{ width: "100%" }}
+                />
+              </CCardBody>
+            </CCard>
+          </div>
+        )}
       </div>
     </>
   );
