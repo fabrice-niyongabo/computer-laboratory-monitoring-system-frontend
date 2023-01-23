@@ -121,6 +121,13 @@ const Stock = () => {
                     <option value="">Choose</option>
                     <option value="Laptop">Laptop</option>
                     <option value="Desktop">Desktop</option>
+                    <option value="Desktop">Printer</option>
+                    <option value="Desktop">Projector</option>
+                    <option value="Desktop">Scanner</option>
+                    <option value="Desktop">Router</option>
+                    <option value="Desktop">Switch</option>
+                    <option value="Desktop">WIFI Access Point</option>
+                    <option value="Desktop">Phone</option>
                   </select>
                   <div>&nbsp; &nbsp;</div>
                   <select
