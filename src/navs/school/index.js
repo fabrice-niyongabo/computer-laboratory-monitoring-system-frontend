@@ -97,6 +97,19 @@ const _nav = [
       },
     ],
   },
+  {
+    component: CNavGroup,
+    name: "Working PCs",
+    to: "/workingpcs",
+    icon: <CIcon icon={cilLibrary} customClassName="nav-icon" />,
+    items: [
+      {
+        component: CNavItem,
+        name: "Pc List",
+        to: "/workingpcs",
+      },
+    ],
+  },
   // {
   //   component: CNavItem,
   //   name: "Notifications",

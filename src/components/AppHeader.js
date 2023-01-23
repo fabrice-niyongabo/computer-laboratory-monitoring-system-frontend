@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -22,7 +22,15 @@ import { setShowSideBar } from "src/actions/app";
 const AppHeader = () => {
   const dispatch = useDispatch();
   const { sidebarShow } = useSelector((state) => state.app);
-  const { fName } = useSelector((state) => state.user);
+  const { fName, destination } = useSelector((state) => state.user);
+  const [dest, setDest] = useState("");
+  useEffect(() => {
+    const d = destination.split("-");
+    if (d.length > 0) {
+      setDest(d[d.length - 1]);
+    }
+    return () => {};
+  }, [destination]);
 
   return (
     <CHeader position="sticky" className="mb-4">
@@ -35,12 +43,12 @@ const AppHeader = () => {
         </CHeaderToggler>
         <CHeaderBrand className="mx-auto d-md-none" to="/">
           {/* <CIcon icon={logo} height={48} alt="Logo" /> */}
-          Computer Labaratory Managment System
+          Computer Labaratory Managment System | {dest.toUpperCase()}
         </CHeaderBrand>
         <CHeaderNav className="d-none d-md-flex me-auto">
           <CNavItem>
             <CNavLink to="/dashboard" component={NavLink}>
-              Computer Labaratory Management System
+              Computer Labaratory Management System | {dest.toUpperCase()}
             </CNavLink>
           </CNavItem>
         </CHeaderNav>

@@ -11,6 +11,7 @@ const DamagedPcs = lazy(() => import("../../views/school/damaged-pcs"));
 const RepairedPcs = lazy(() => import("../../views/school/repaired-pcs"));
 const StolenPcs = lazy(() => import("../../views/school/stolen-pcs"));
 const ArchivedPcs = lazy(() => import("../../views/school/archived-pcs"));
+const WorkingPcs = lazy(() => import("../../views/school/working-pcs"));
 
 const routes = [
   { path: "/", exact: true, name: "Home" },
@@ -22,6 +23,7 @@ const routes = [
   { path: "/repairedpcs", name: "DamagedPcs", element: RepairedPcs },
   { path: "/stolenpcs", name: "StolenPcs", element: StolenPcs },
   { path: "/archivedpcs", name: "ArchivedPcs", element: ArchivedPcs },
+  { path: "/workingpcs", name: "ArchivedPcs", element: WorkingPcs },
 ];
 
 export default routes;

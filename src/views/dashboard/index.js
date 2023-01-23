@@ -8,7 +8,7 @@ import { CChartDoughnut } from "@coreui/react-chartjs";
 import { useSelector } from "react-redux";
 
 const Dashboard = () => {
-  const { damaged, stolen, archieved, repaired } = useSelector(
+  const { damaged, stolen, archieved, repaired, working } = useSelector(
     (state) => state.app
   );
   const loadData = useLoadBasicData();
@@ -24,12 +24,17 @@ const Dashboard = () => {
           <CCard className="mb-4">
             <CCardBody>
               <CChartDoughnut
+                options={{
+                  responsive: true,
+                  legend: { position: "right" },
+                }}
                 data={{
                   labels: [
                     "Repaired Devices",
                     "Solen Devices",
                     "Archived Devices",
                     "Damaged Devices",
+                    "Working Devices",
                   ],
                   datasets: [
                     {
@@ -38,12 +43,14 @@ const Dashboard = () => {
                         "#E46651",
                         "#00D8FF",
                         "#DD1B16",
+                        "#0000FF",
                       ],
                       data: [
                         repaired.length,
                         stolen.length,
                         archieved.length,
                         damaged.length,
+                        working.length,
                       ],
                     },
                   ],

@@ -8,6 +8,7 @@ import {
   SET_STOCK,
   SET_STOLEN,
   SET_DAMAGED,
+  SET_WORKING,
 } from "src/actions/app";
 
 const initialState = {
@@ -19,6 +20,7 @@ const initialState = {
   repaired: [],
   stolen: [],
   archieved: [],
+  working: [],
 };
 
 const user = (state = initialState, action) => {
@@ -37,6 +39,8 @@ const user = (state = initialState, action) => {
       return { ...state, repaired: action.payload };
     case SET_STOLEN:
       return { ...state, stolen: action.payload };
+    case SET_WORKING:
+      return { ...state, working: action.payload };
     case SET_ARCHIEVED:
       return { ...state, archieved: action.payload };
     case SET_RESET_APP:

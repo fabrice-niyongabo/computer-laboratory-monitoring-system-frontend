@@ -13,7 +13,8 @@ import { useSelector } from "react-redux";
 import PlaceHolder from "src/components/placeholder";
 import Axios from "axios";
 import EditPc from "./edit-pc";
-const Stock = () => {
+import { Link } from "react-router-dom";
+const ArchivedPcs = () => {
   const user = useSelector((state) => state.user);
   const { token, role } = user;
   const mainPath = role.toLowerCase();
@@ -36,22 +37,17 @@ const Stock = () => {
     if (keyWord.trim() !== "") {
       res = allPcList.filter(
         (item) =>
-          item.pcDetails.serialNumber
-            .toLowerCase()
+          item?.pcDetails?.serialNumber
+            ?.toLowerCase()
             .includes(keyWord.toLowerCase()) ||
-          item.pcDetails.model.toLowerCase().includes(keyWord.toLowerCase())
+          item.description.toLowerCase().includes(keyWord.toLowerCase()) ||
+          item?.pcDetails?.model?.toLowerCase().includes(keyWord.toLowerCase())
       );
-    }
-    if (typeFilter !== "") {
-      res = res.filter((item) => item.pcDetails.type === typeFilter);
-    }
-    if (statusFilter !== "") {
-      res = res.filter((item) => item.status === statusFilter);
     }
     if (dateFilter !== "") {
       res = res.filter(
         (item) =>
-          new Date(item.createdAt).toLocaleDateString() ===
+          new Date(item.archievedDate).toLocaleDateString() ===
           new Date(dateFilter).toLocaleDateString()
       );
     }
@@ -64,7 +60,7 @@ const Stock = () => {
 
   const fetchPcs = () => {
     setIsLoading(true);
-    Axios.get(BACKEND_URL + "/" + mainPath + "/?token=" + token)
+    Axios.get(BACKEND_URL + "/" + mainPath + "/workingPc/?token=" + token)
       .then((res) => {
         setTimeout(() => {
           setIsLoading(false);
@@ -86,7 +82,7 @@ const Stock = () => {
             <CCardHeader>
               <div className="d-flex justify-content-between">
                 <div>
-                  <strong>Stock Details</strong>
+                  <strong>Working PC List</strong>
                 </div>
                 <div className="d-flex justify-content-between">
                   <input
@@ -97,36 +93,6 @@ const Stock = () => {
                     onChange={(e) => setKeyword(e.target.value)}
                   />
                   <div>&nbsp; &nbsp;</div>
-                  <select
-                    className="form-select"
-                    value={typeFilter}
-                    onChange={(e) => setTypeFilter(e.target.value)}
-                  >
-                    <option value="">Choose</option>
-                    <option value="Laptop">Laptop</option>
-                    <option value="Desktop">Desktop</option>
-                    <option value="Printer">Printer</option>
-                    <option value="Projector">Projector</option>
-                    <option value="Scanner">Scanner</option>
-                    <option value="Router">Router</option>
-                    <option value="Switch">Switch</option>
-                    <option value="WIFI Access Point">WIFI Access Point</option>
-                    <option value="Phone">Phone</option>
-                  </select>
-                  <div>&nbsp; &nbsp;</div>
-                  <select
-                    className="form-select"
-                    value={statusFilter}
-                    onChange={(e) => setStatusFilter(e.target.value)}
-                  >
-                    <option value="">Choose</option>
-                    <option value="repaired">Repaired</option>
-                    <option value="working">Working</option>
-                    <option value="stolen">Stolen</option>
-                    <option value="archieved">Archieved</option>
-                    <option value="damaged">Damaged</option>
-                  </select>
-                  <div>&nbsp; &nbsp;</div>
                   <input
                     type="date"
                     className="form-control"
@@ -134,6 +100,13 @@ const Stock = () => {
                     value={dateFilter}
                     onChange={(e) => setDateFilter(e.target.value)}
                   />
+                  <div>&nbsp; &nbsp;</div>
+                  <Link
+                    to={`/printer/workingPc/?archievedDate=${dateFilter}&pcDetails__serialNumber=${keyWord}&description=${keyWord}&pcDetails__model=${keyWord}`}
+                    target="_blank"
+                  >
+                    <button className="btn btn-primary">Print</button>
+                  </Link>
                 </div>
               </div>
             </CCardHeader>
@@ -147,41 +120,33 @@ const Stock = () => {
                       <tr>
                         <th>#</th>
                         <th>Serial Number</th>
-                        <th>Model</th>
-                        <th>Type</th>
-                        <th>Lifespan</th>
-                        <th>Status</th>
-                        <th>Received Date</th>
+                        <th>Date</th>
+                        <th>Description</th>
                         <th>Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {pcList
-                        .filter((item) => item.isReceived)
-                        .map((item, index) => (
-                          <tr key={index}>
-                            <td>{index + 1}</td>
-                            <td>{item.pcDetails.serialNumber}</td>
-                            <td>{item.pcDetails.model}</td>
-                            <td>{item.pcDetails.type}</td>
-                            <td>{item.pcDetails.lifeSpan}</td>
-                            <td>{item.status}</td>
-                            <td>
-                              {new Date(item.createdAt).toLocaleDateString()}
-                            </td>
-                            <td>
-                              <button
-                                className="btn btn-primary"
-                                onClick={() => {
-                                  setShowTransferModal(true);
-                                  setSelectedPc(item);
-                                }}
-                              >
-                                Edit
-                              </button>
-                            </td>
-                          </tr>
-                        ))}
+                      {pcList.map((item, index) => (
+                        <tr key={index}>
+                          <td>{index + 1}</td>
+                          <td>{item?.pcDetails?.serialNumber}</td>
+                          <td>
+                            {new Date(item.archievedDate).toLocaleDateString()}
+                          </td>
+                          <td>{item.description}</td>
+                          <td>
+                            <button
+                              className="btn btn-primary"
+                              onClick={() => {
+                                setShowTransferModal(true);
+                                setSelectedPc(item);
+                              }}
+                            >
+                              Edit
+                            </button>
+                          </td>
+                        </tr>
+                      ))}
                     </tbody>
                   </table>
                 </div>
@@ -202,4 +167,4 @@ const Stock = () => {
   );
 };
 
-export default Stock;
+export default ArchivedPcs;

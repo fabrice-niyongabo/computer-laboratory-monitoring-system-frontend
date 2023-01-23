@@ -6,6 +6,7 @@ import {
   CCardHeader,
   CCol,
   CRow,
+  CTooltip,
 } from "@coreui/react";
 import { errorHandler, toastMessage } from "src/helpers";
 import { BACKEND_URL } from "src/constants";
@@ -138,6 +139,13 @@ const Stock = () => {
                     <option value="">Choose</option>
                     <option value="Laptop">Laptop</option>
                     <option value="Desktop">Desktop</option>
+                    <option value="Printer">Printer</option>
+                    <option value="Projector">Projector</option>
+                    <option value="Scanner">Scanner</option>
+                    <option value="Router">Router</option>
+                    <option value="Switch">Switch</option>
+                    <option value="WIFI Access Point">WIFI Access Point</option>
+                    <option value="Phone">Phone</option>
                   </select>
                   <div>&nbsp; &nbsp;</div>
                   <select
@@ -220,9 +228,48 @@ const Stock = () => {
                           <td>{item.lifeSpan}</td>
                           <td>{item.description}</td>
                           <td>
-                            {item.isTransfered
-                              ? "Transfered"
-                              : "Not Transfered"}
+                            {item.isTransfered ? (
+                              <>
+                                <CTooltip
+                                  content={
+                                    <>
+                                      <p>TRANSFERED TO</p>
+                                      <p className="m-0 p-0">
+                                        <b>Institution:</b>{" "}
+                                        {item?.transferedTo?.institution}
+                                      </p>
+                                      <p className="m-0 p-0">
+                                        <b>Province:</b>{" "}
+                                        {item?.transferedTo?.province}
+                                      </p>
+                                      <p>
+                                        <b>District:</b>{" "}
+                                        {item?.transferedTo?.district}
+                                      </p>
+                                      <span>RECEIVED BY</span>
+                                      <p className="m-0 p-0">
+                                        <b>Names:</b>{" "}
+                                        {item?.transferedTo?.receivedBy?.names}
+                                      </p>
+                                      <p>
+                                        <b>Email:</b>{" "}
+                                        {item?.transferedTo?.receivedBy?.email}
+                                      </p>
+                                    </>
+                                  }
+                                >
+                                  <span
+                                    style={{
+                                      cursor: "pointer",
+                                    }}
+                                  >
+                                    Transfered
+                                  </span>
+                                </CTooltip>
+                              </>
+                            ) : (
+                              "Not Transfered"
+                            )}
                           </td>
                           <td>
                             {new Date(item.createdAt).toLocaleDateString()}
@@ -239,7 +286,10 @@ const Stock = () => {
                             </button>{" "}
                             <button
                               className="btn btn-danger"
-                              onClick={() => handleDelete(item)}
+                              onClick={() =>
+                                confirm("Do you want to delete this device?") &&
+                                handleDelete(item)
+                              }
                             >
                               <CIcon icon={cilTrash} />
                             </button>

@@ -35,11 +35,16 @@ const _nav = [
     name: "Pending PCs",
     to: "/pendingpcs",
     icon: <CIcon icon={cilAvTimer} customClassName="nav-icon" />,
+
     items: [
       {
         component: CNavItem,
         name: "Waiting List",
         to: "/pendingpcs",
+        // badge: {
+        //   color: "danger",
+        //   text: "2",
+        // },
       },
     ],
   },
@@ -68,6 +73,11 @@ const _nav = [
         component: CNavItem,
         name: "Stolen Devices",
         to: "/stolenpcs",
+      },
+      {
+        component: CNavItem,
+        name: "Working Devices",
+        to: "/workingpcs",
       },
     ],
   },

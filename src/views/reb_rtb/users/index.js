@@ -99,13 +99,29 @@ const Users = () => {
     setProvincesList(Provinces());
   }, []);
 
-  const handleDelete = (id) => {
+  const handleEnable = (id) => {
     dispatch(setShowFullPageLoader(true));
-    Axios.delete(BACKEND_URL + "/auth/users/" + id + "/?token=" + token)
+    Axios.put(BACKEND_URL + "/auth/activate/status/" + id, { token })
       .then((res) => {
         setTimeout(() => {
           dispatch(setShowFullPageLoader(false));
-          toastMessage("success", "User deleted!");
+          toastMessage("success", "User updated!");
+          fetchUsers();
+        }, 1000);
+      })
+      .catch((error) => {
+        dispatch(setShowFullPageLoader(false));
+        errorHandler(error);
+      });
+  };
+
+  const handleDesable = (id) => {
+    dispatch(setShowFullPageLoader(true));
+    Axios.put(BACKEND_URL + "/auth/deactivate/status/" + id, { token })
+      .then((res) => {
+        setTimeout(() => {
+          dispatch(setShowFullPageLoader(false));
+          toastMessage("success", "User updated!");
           fetchUsers();
         }, 1000);
       })
@@ -151,6 +167,7 @@ const Users = () => {
                         <th>Email</th>
                         <th>Phone</th>
                         <th>Role</th>
+                        <th>Status</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -164,13 +181,30 @@ const Users = () => {
                           <td>{item.email}</td>
                           <td>{item.phone}</td>
                           <td>{item.role}</td>
+                          <td>{item.isActive ? "Enabled" : "Disabled"}</td>
                           <td>
-                            <button
-                              className="btn btn-danger"
-                              onClick={() => handleDelete(item._id)}
-                            >
-                              <CIcon icon={cilTrash} />
-                            </button>
+                            {item.isActive ? (
+                              <button
+                                className="btn btn-danger"
+                                onClick={() =>
+                                  confirm(
+                                    "Do you want to disable this user?"
+                                  ) && handleDesable(item._id)
+                                }
+                              >
+                                Disable
+                              </button>
+                            ) : (
+                              <button
+                                className="btn btn-primary"
+                                onClick={() =>
+                                  confirm("Do you want to enable this user?") &&
+                                  handleEnable(item._id)
+                                }
+                              >
+                                Enable
+                              </button>
+                            )}
                           </td>
                         </tr>
                       ))}

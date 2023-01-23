@@ -26,6 +26,7 @@ function Profile() {
   );
   const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [state, setState] = useState({
     firstname: "",
     lastname: "",
@@ -39,6 +40,8 @@ function Profile() {
 
   const handleChangePassword = (e) => {
     e.preventDefault();
+    if (newPassword !== confirmPassword)
+      toastMessage("error", "Passwords do not match.");
     dispatch(setShowFullPageLoader(true));
     Axios.put(BACKEND_URL + "/auth/updatepassword/", {
       newPassword,
@@ -97,6 +100,7 @@ function Profile() {
                   className="form-control"
                   required
                   placeholder="Your firstname"
+                  disabled
                 />
               </div>
               <div className="mb-3">
@@ -109,6 +113,7 @@ function Profile() {
                   className="form-control"
                   required
                   placeholder="Your lastname"
+                  disabled
                 />
               </div>
               <div className="mb-3">
@@ -121,6 +126,7 @@ function Profile() {
                   className="form-control"
                   required
                   placeholder="Your email address"
+                  disabled
                 />
               </div>
               <div className="mb-3">
@@ -171,7 +177,18 @@ function Profile() {
                   className="form-control"
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
-                  placeholder="Enter your current password"
+                  placeholder="Enter new password"
+                  required
+                />
+              </div>
+              <div className="mb-3">
+                <label>Confirm Password</label>
+                <input
+                  type="password"
+                  className="form-control"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  placeholder="Confirm new password"
                   required
                 />
               </div>
