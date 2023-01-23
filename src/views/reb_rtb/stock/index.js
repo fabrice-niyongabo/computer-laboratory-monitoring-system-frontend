@@ -14,10 +14,11 @@ import { useDispatch, useSelector } from "react-redux";
 import PlaceHolder from "src/components/placeholder";
 import Axios from "axios";
 import CIcon from "@coreui/icons-react";
-import { cilPen, cilSend, cilTrash } from "@coreui/icons";
+import { cilPen, cilTrash } from "@coreui/icons";
 import EditPc from "./edit-pc";
 import { setShowFullPageLoader } from "src/actions/app";
 import TransferPc from "./transfer-pc";
+import { Districts } from "rwanda";
 const Stock = () => {
   const dispatch = useDispatch();
   const { token, role } = useSelector((state) => state.user);
@@ -34,6 +35,7 @@ const Stock = () => {
   const [typeFilter, setTypeFilter] = useState("");
   const [statusFilter, setStatusFilter] = useState("");
   const [dateFilter, setDateFilter] = useState("");
+  const [districtFilter, setDistrictFilter] = useState("");
 
   useEffect(() => {
     let res = allPcList;
@@ -50,6 +52,13 @@ const Stock = () => {
     if (statusFilter !== "") {
       res = res.filter((item) => item.isTransfered.toString() === statusFilter);
     }
+    if (districtFilter !== "") {
+      res = res.filter(
+        (item) =>
+          item?.transferedTo?.district?.toLowerCase() ===
+          districtFilter.toLowerCase()
+      );
+    }
     if (dateFilter !== "") {
       res = res.filter(
         (item) =>
@@ -58,7 +67,14 @@ const Stock = () => {
       );
     }
     setPcList(res);
-  }, [keyWord, typeFilter, statusFilter, dateFilter, allPcList]);
+  }, [
+    keyWord,
+    typeFilter,
+    statusFilter,
+    dateFilter,
+    allPcList,
+    districtFilter,
+  ]);
 
   useEffect(() => {
     fetchPcs();
@@ -156,6 +172,19 @@ const Stock = () => {
                     <option value="">Choose</option>
                     <option value="true">Transfered</option>
                     <option value="false">Not Transfered</option>
+                  </select>
+                  <div>&nbsp; &nbsp;</div>
+                  <select
+                    className="form-select"
+                    value={districtFilter}
+                    onChange={(e) => setDistrictFilter(e.target.value)}
+                  >
+                    <option value="">Choose</option>
+                    {Districts().map((item, index) => (
+                      <option value={item} key={index}>
+                        {item}
+                      </option>
+                    ))}
                   </select>
                   <div>&nbsp; &nbsp;</div>
                   <input
