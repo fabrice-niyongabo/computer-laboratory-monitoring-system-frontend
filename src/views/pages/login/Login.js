@@ -70,8 +70,13 @@ const Login = () => {
     }
   };
 
+  const bg = require("../../../assets/bg1.jpg");
+
   return (
-    <div className="bg-light min-vh-100 d-flex flex-row align-items-center">
+    <div
+      className="bg-light min-vh-100 d-flex flex-row align-items-center"
+      style={{ backgroundImage: `url(${bg})`, backgroundSize: "100% 100%" }}
+    >
       <CContainer>
         <CRow className="justify-content-center">
           <CCol md={8}>
