@@ -21,7 +21,7 @@ const _nav = [
   },
   {
     component: CNavGroup,
-    name: "PC Stock",
+    name: "Stock",
     to: "/stock",
     icon: <CIcon icon={cibCodesandbox} customClassName="nav-icon" />,
     items: [
@@ -34,7 +34,7 @@ const _nav = [
   },
   {
     component: CNavGroup,
-    name: "Pending PCs",
+    name: "Pending Devices",
     to: "/pendingpcs",
     icon: <CIcon icon={cilAvTimer} customClassName="nav-icon" />,
     items: [
@@ -47,20 +47,20 @@ const _nav = [
   },
   {
     component: CNavGroup,
-    name: "Damaged PCs",
+    name: "Damaged Devices",
     to: "/damagedpcs",
     icon: <CIcon icon={cilApplicationsSettings} customClassName="nav-icon" />,
     items: [
       {
         component: CNavItem,
-        name: "PC List",
+        name: "Device List",
         to: "/damagedpcs",
       },
     ],
   },
   {
     component: CNavGroup,
-    name: "Repaired PCs",
+    name: "Repaired Devices",
     to: "/repairedpcs",
     icon: <CIcon icon={cilBolt} customClassName="nav-icon" />,
     items: [
@@ -73,7 +73,7 @@ const _nav = [
   },
   {
     component: CNavGroup,
-    name: "Stolen PCs",
+    name: "Stolen Devices",
     to: "/stolenpcs",
     icon: <CIcon icon={cilIndustrySlash} customClassName="nav-icon" />,
     items: [
@@ -86,7 +86,7 @@ const _nav = [
   },
   {
     component: CNavGroup,
-    name: "Archived PCs",
+    name: "Archived Devices",
     to: "/archivedpcs",
     icon: <CIcon icon={cilLibrary} customClassName="nav-icon" />,
     items: [
@@ -99,7 +99,7 @@ const _nav = [
   },
   {
     component: CNavGroup,
-    name: "Working PCs",
+    name: "Working Devices",
     to: "/workingpcs",
     icon: <CIcon icon={cilLibrary} customClassName="nav-icon" />,
     items: [

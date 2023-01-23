@@ -101,7 +101,7 @@ const PendingPcs = () => {
             <CCardHeader>
               <div className="d-flex justify-content-between">
                 <div>
-                  <strong>Computers which are yet to be delivered</strong>
+                  <strong>Devices which are yet to be delivered</strong>
                 </div>
                 <div className="d-flex justify-content-between">
                   <input

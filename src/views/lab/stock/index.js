@@ -52,7 +52,7 @@ const Stock = () => {
     Axios.delete(BACKEND_URL + "/pc/" + item._id + "?token=" + token)
       .then((res) => {
         setTimeout(() => {
-          toastMessage("success", "Computer deleted successfull");
+          toastMessage("success", "Device deleted successfull");
           dispatch(setShowFullPageLoader(false));
           setPcList(pcList.filter((i) => i._id != item._id));
         }, 1000);

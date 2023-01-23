@@ -19,7 +19,7 @@ const _nav = [
   },
   {
     component: CNavGroup,
-    name: "PC Stock",
+    name: "Stock",
     to: "/stock",
     icon: <CIcon icon={cibCodesandbox} customClassName="nav-icon" />,
     items: [
@@ -32,7 +32,7 @@ const _nav = [
   },
   {
     component: CNavGroup,
-    name: "Pending PCs",
+    name: "Pending Devices",
     to: "/pendingpcs",
     icon: <CIcon icon={cilAvTimer} customClassName="nav-icon" />,
 

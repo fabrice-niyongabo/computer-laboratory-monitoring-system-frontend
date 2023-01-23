@@ -24,7 +24,7 @@ function EditPc({ showModal, setShowModal, selectedPc, token, fetchPcs }) {
     Axios.put(BACKEND_URL + "/pc/" + state._id, { ...state, token })
       .then((res) => {
         setTimeout(() => {
-          toastMessage("success", "Computer updated!");
+          toastMessage("success", "Device updated!");
           setSubmitting(false);
           setShowModal(false);
           fetchPcs();
@@ -55,7 +55,7 @@ function EditPc({ showModal, setShowModal, selectedPc, token, fetchPcs }) {
       >
         <form onSubmit={handleSubmit}>
           <CModalHeader>
-            <CModalTitle>Edit Computer</CModalTitle>
+            <CModalTitle>Edit Device</CModalTitle>
           </CModalHeader>
           <CModalBody>
             <div className="mb-3">

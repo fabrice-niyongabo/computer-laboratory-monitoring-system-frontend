@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  CCard,
-  CCardBody,
-  CCardFooter,
-  CCardHeader,
-  CCol,
-  CRow,
-} from "@coreui/react";
+import { CCard, CCardBody, CCardHeader, CCol, CRow } from "@coreui/react";
 import { errorHandler, toastMessage } from "src/helpers";
 import { BACKEND_URL } from "src/constants";
 import { useSelector } from "react-redux";
@@ -132,7 +125,7 @@ const StolenPcs = () => {
                           <td>{item?.pcDetails?.serialNumber}</td>
                           <td>{item?.school.toUpperCase()}</td>
                           <td>
-                            {new Date(item.stolenDate).toLocaleDateString()}
+                            {new Date(item.receivedDate).toLocaleDateString()}
                           </td>
                           <td>{item.description}</td>
                         </tr>

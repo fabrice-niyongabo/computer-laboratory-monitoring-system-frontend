@@ -26,7 +26,7 @@ const _nav = [
   },
   {
     component: CNavGroup,
-    name: "PC Stock",
+    name: "Stock",
     to: "/stock",
     icon: <CIcon icon={cibCodesandbox} customClassName="nav-icon" />,
     items: [

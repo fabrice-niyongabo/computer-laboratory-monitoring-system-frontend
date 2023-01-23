@@ -127,6 +127,7 @@ const Stock = () => {
                       placeholder="Number of years"
                       name="lifeSpan"
                       type="number"
+                      min="1"
                       value={state.lifeSpan}
                       onChange={changeHandler}
                       required
@@ -154,6 +155,7 @@ const Stock = () => {
                       className="form-control"
                       placeholder="Description"
                       name="manufacturedDate"
+                      max="2023-01-26"
                       value={state.manufacturedDate}
                       onChange={changeHandler}
                       required

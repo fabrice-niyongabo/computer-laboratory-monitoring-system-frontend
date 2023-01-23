@@ -78,6 +78,20 @@ const Login = () => {
       style={{ backgroundImage: `url(${bg})`, backgroundSize: "100% 100%" }}
     >
       <CContainer>
+        <div
+          className="p-4"
+          style={{
+            width: "fit-content",
+            borderRadius: "50%",
+            margin: "auto",
+          }}
+        >
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/1/17/Coat_of_arms_of_Rwanda.svg"
+            alt=""
+            style={{ height: "100px", width: "100px" }}
+          />
+        </div>
         <CRow className="justify-content-center">
           <CCol md={8}>
             <CCardGroup>
@@ -132,7 +146,7 @@ const Login = () => {
                     <h2>CLMS</h2>
                     <p>
                       The general objective of this project is to develop a
-                      reliable system that will track usability of computers in
+                      reliable system that will track usability of ICT Device in
                       public secondary school. our project scope will cover
                       public secondary schools in Rwanda (REB, RTB) and we will
                       not include private schools.

@@ -49,7 +49,7 @@ const ArchivedPcs = () => {
     if (dateFilter !== "") {
       res = res.filter(
         (item) =>
-          new Date(item.archievedDate).toLocaleDateString() ===
+          new Date(item.receivedDate).toLocaleDateString() ===
           new Date(dateFilter).toLocaleDateString()
       );
     }
@@ -138,7 +138,7 @@ const ArchivedPcs = () => {
                           <td>{item?.sector.toUpperCase()}</td>
                           <td>{item?.school.toUpperCase()}</td>
                           <td>
-                            {new Date(item.archievedDate).toLocaleDateString()}
+                            {new Date(item.receivedDate).toLocaleDateString()}
                           </td>
                           <td>{item.description}</td>
                         </tr>

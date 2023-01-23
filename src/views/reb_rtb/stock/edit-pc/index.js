@@ -34,7 +34,7 @@ function EditPc({
     })
       .then((res) => {
         setTimeout(() => {
-          toastMessage("success", "Computer updated!");
+          toastMessage("success", "Device updated!");
           setSubmitting(false);
           setShowModal(false);
           fetchPcs();
@@ -65,7 +65,7 @@ function EditPc({
       >
         <form onSubmit={handleSubmit}>
           <CModalHeader>
-            <CModalTitle>Edit Computer</CModalTitle>
+            <CModalTitle>Edit Device</CModalTitle>
           </CModalHeader>
           <CModalBody>
             <div className="mb-3">
@@ -85,7 +85,7 @@ function EditPc({
               <label>Model</label>
               <input
                 className="form-control"
-                placeholder="Enter pc model"
+                placeholder="Enter device model"
                 name="model"
                 value={state.model}
                 onChange={changeHandler}

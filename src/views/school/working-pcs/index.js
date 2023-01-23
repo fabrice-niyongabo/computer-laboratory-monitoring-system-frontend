@@ -131,7 +131,7 @@ const ArchivedPcs = () => {
                           <td>{index + 1}</td>
                           <td>{item?.pcDetails?.serialNumber}</td>
                           <td>
-                            {new Date(item.archievedDate).toLocaleDateString()}
+                            {new Date(item.receivedDate).toLocaleDateString()}
                           </td>
                           <td>{item.description}</td>
                           <td>

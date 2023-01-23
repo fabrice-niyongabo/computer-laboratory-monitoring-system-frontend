@@ -43,7 +43,7 @@ function TransferPc({
         setSentPcs(i + 1);
       }
       setTimeout(() => {
-        toastMessage("success", "Computer(s) Transfered!");
+        toastMessage("success", "Device(s) Transfered!");
         setSubmitting(false);
         setShowModal(false);
         fetchPcs();
@@ -70,11 +70,11 @@ function TransferPc({
       >
         <form onSubmit={handleSubmit}>
           <CModalHeader closeButton={!submitting}>
-            <CModalTitle>Confirm Computer(s) Transfer</CModalTitle>
+            <CModalTitle>Confirm Device(s) Transfer</CModalTitle>
           </CModalHeader>
           <CModalBody>
             <small>
-              You are going to transfer {pcsToSend.length} computer(s), please
+              You are going to transfer {pcsToSend.length} device(s), please
               choose destination
             </small>
             <div className="mb-3">

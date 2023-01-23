@@ -28,7 +28,7 @@ const Stock = () => {
       Axios.post(BACKEND_URL + "/pc/", { ...state, token })
         .then((res) => {
           setTimeout(() => {
-            toastMessage("success", "Computer added to the stock!");
+            toastMessage("success", "Device added to the stock!");
             dispatch(setShowFullPageLoader(false));
             setState(initialState);
           }, 1000);
@@ -50,7 +50,7 @@ const Stock = () => {
         <CCol md={12}>
           <CCard className="mb-4">
             <CCardHeader>
-              <strong>Register new pc</strong>
+              <strong>Register new Device</strong>
             </CCardHeader>
             <CCardBody>
               <CRow>
@@ -124,7 +124,7 @@ const Stock = () => {
                 <CCol md={4}>
                   <div className="my-3">
                     <button type="submit" className="btn btn-primary">
-                      Save computer
+                      Save device
                     </button>
                   </div>
                 </CCol>

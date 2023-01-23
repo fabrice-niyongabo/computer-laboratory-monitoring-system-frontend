@@ -38,7 +38,7 @@ function ApprovePc({
         setSentPcs([...sentPcs, res.data]);
       }
       setTimeout(() => {
-        toastMessage("success", "Computer(s) received!");
+        toastMessage("success", "Device(s) received!");
         navigate("/stock");
       }, 1000);
     } catch (error) {
@@ -67,8 +67,8 @@ function ApprovePc({
           <CModalBody>
             <p>
               Dear <b>{fName}</b>, you are going to approve that you have
-              received {pcsToSend.length} computer(s) in your organization.
-              Click on the button bellow to approve.
+              received {pcsToSend.length} device(s) in your organization. Click
+              on the button bellow to approve.
             </p>
           </CModalBody>
           <CModalFooter>
