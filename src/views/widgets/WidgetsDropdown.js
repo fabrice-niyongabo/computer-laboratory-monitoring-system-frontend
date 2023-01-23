@@ -21,14 +21,16 @@ const WidgetsDropdown = () => {
           title="Devices in the stock"
         />
       </CCol>
-      <CCol sm={6} lg={3}>
-        <CWidgetStatsA
-          className="mb-4 pb-4"
-          color="info"
-          value={<>{stock.filter((item) => item.isTransfered).length}</>}
-          title="Transfered Devices"
-        />
-      </CCol>
+      {role !== "school" && (
+        <CCol sm={6} lg={3}>
+          <CWidgetStatsA
+            className="mb-4 pb-4"
+            color="info"
+            value={<>{stock.filter((item) => item.isTransfered).length}</>}
+            title="Transfered Devices"
+          />
+        </CCol>
+      )}
       {role !== "reb" && role !== "rtb" && (
         <CCol sm={6} lg={3}>
           <CWidgetStatsA

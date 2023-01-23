@@ -120,6 +120,13 @@ const PendingPcs = () => {
                     <option value="">Choose</option>
                     <option value="Laptop">Laptop</option>
                     <option value="Desktop">Desktop</option>
+                    <option value="Printer">Printer</option>
+                    <option value="Projector">Projector</option>
+                    <option value="Scanner">Scanner</option>
+                    <option value="Router">Router</option>
+                    <option value="Switch">Switch</option>
+                    <option value="WIFI Access Point">WIFI Access Point</option>
+                    <option value="Phone">Phone</option>
                   </select>
                   <div>&nbsp; &nbsp;</div>
                   <select
