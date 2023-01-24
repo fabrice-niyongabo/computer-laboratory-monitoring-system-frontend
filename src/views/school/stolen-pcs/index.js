@@ -82,7 +82,7 @@ const StolenPcs = () => {
             <CCardHeader>
               <div className="d-flex justify-content-between">
                 <div>
-                  <strong>Stolen PC List</strong>
+                  <strong>Stolen Device List</strong>
                 </div>
                 <div className="d-flex justify-content-between">
                   <input

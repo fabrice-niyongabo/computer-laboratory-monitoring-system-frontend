@@ -104,7 +104,7 @@ const ArchivedPcs = () => {
                   />
                   <div>&nbsp; &nbsp;</div>
                   <Link
-                    to={`/printer/archieved/?archievedDate=${dateFilter}&pcDetails__serialNumber=${keyWord}&description=${keyWord}&pcDetails__model=${keyWord}&school=${keyWord}&sector=${keyWord}&district=${keyWord}`}
+                    to={`/printer/working/?receivedDate=${dateFilter}&pcDetails__serialNumber=${keyWord}&description=${keyWord}&pcDetails__model=${keyWord}&school=${keyWord}&sector=${keyWord}&district=${keyWord}`}
                     target="_blank"
                   >
                     <button className="btn btn-primary">Print</button>
@@ -125,7 +125,7 @@ const ArchivedPcs = () => {
                         <th>District</th>
                         <th>Sector</th>
                         <th>SchoolName</th>
-                        <th>Date</th>
+                        <th>Received Date</th>
                         <th>Description</th>
                       </tr>
                     </thead>

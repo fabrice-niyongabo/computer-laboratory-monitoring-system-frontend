@@ -103,7 +103,7 @@ const StolenPcs = () => {
                   />
                   <div>&nbsp; &nbsp;</div>
                   <Link
-                    to={`/printer/stolen/?stolenDate=${dateFilter}&pcDetails__serialNumber=${keyWord}&description=${keyWord}&pcDetails__model=${keyWord}&sector=${keyWord}&school=${keyWord}`}
+                    to={`/printer/working/?receivedDate=${dateFilter}&pcDetails__serialNumber=${keyWord}&description=${keyWord}&pcDetails__model=${keyWord}&sector=${keyWord}&school=${keyWord}`}
                     target="_blank"
                   >
                     <button className="btn btn-primary">Print</button>
@@ -123,8 +123,7 @@ const StolenPcs = () => {
                         <th>Serial Number</th>
                         <th>Sector</th>
                         <th>School</th>
-                        <th>Date</th>
-                        <th>Description</th>
+                        <th>RecievedDate</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -135,9 +134,8 @@ const StolenPcs = () => {
                           <td>{item?.sector.toUpperCase()}</td>
                           <td>{item?.school.toUpperCase()}</td>
                           <td>
-                            {new Date(item.stolenDate).toLocaleDateString()}
+                            {new Date(item.receivedDate).toLocaleDateString()}
                           </td>
-                          <td>{item.description}</td>
                         </tr>
                       ))}
                     </tbody>

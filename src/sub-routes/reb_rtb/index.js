@@ -8,7 +8,7 @@ const Profile = lazy(() => import("../../views/profile"));
 const Stock = lazy(() => import("../../views/reb_rtb/stock"));
 const Users = lazy(() => import("../../views/reb_rtb/users"));
 const AddPc = lazy(() => import("../../views/reb_rtb/addpc"));
-const DamagedPcs = lazy(() =>
+const DamagedStolens = lazy(() =>
   import("../../views/reb_rtb/reports/damaged-pcs")
 );
 const RepairedPcs = lazy(() =>

@@ -82,7 +82,7 @@ const DamagedPcs = () => {
             <CCardHeader>
               <div className="d-flex justify-content-between">
                 <div>
-                  <strong>Damaged PC List</strong>
+                  <strong>Damaged Device List</strong>
                 </div>
                 <div className="d-flex justify-content-between">
                   <input

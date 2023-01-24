@@ -66,7 +66,7 @@ const _nav = [
     items: [
       {
         component: CNavItem,
-        name: "Pc List",
+        name: "Device List",
         to: "/repairedpcs",
       },
     ],
@@ -79,7 +79,7 @@ const _nav = [
     items: [
       {
         component: CNavItem,
-        name: "Pc List",
+        name: "Device List",
         to: "/stolenpcs",
       },
     ],
@@ -92,7 +92,7 @@ const _nav = [
     items: [
       {
         component: CNavItem,
-        name: "Pc List",
+        name: "Device List",
         to: "/archivedpcs",
       },
     ],
@@ -105,7 +105,7 @@ const _nav = [
     items: [
       {
         component: CNavItem,
-        name: "Pc List",
+        name: "Device List",
         to: "/workingpcs",
       },
     ],

@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  CCard,
-  CCardBody,
-  CCardFooter,
-  CCardHeader,
-  CCol,
-  CRow,
-} from "@coreui/react";
+import { CCard, CCardBody, CCardHeader, CCol, CRow } from "@coreui/react";
 import { errorHandler, toastMessage } from "src/helpers";
 import { BACKEND_URL } from "src/constants";
 import { useSelector } from "react-redux";

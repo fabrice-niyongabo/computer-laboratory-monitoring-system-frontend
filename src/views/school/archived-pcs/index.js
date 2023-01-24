@@ -82,7 +82,7 @@ const ArchivedPcs = () => {
             <CCardHeader>
               <div className="d-flex justify-content-between">
                 <div>
-                  <strong>Archieved PC List</strong>
+                  <strong>Archieved Device List</strong>
                 </div>
                 <div className="d-flex justify-content-between">
                   <input
