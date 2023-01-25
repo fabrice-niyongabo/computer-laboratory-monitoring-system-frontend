@@ -55,6 +55,7 @@ const Dashboard = () => {
                     },
                   },
                 }}
+                style={{ padding: 0, marginTop: "-90px" }}
                 data={{
                   labels: [
                     "Repaired Devices",
@@ -129,10 +130,10 @@ const Dashboard = () => {
                     <li style={{ listStyleType: "none", fontWeight: "700" }}>
                       {stock.filter((item) => item.type === "Projector")
                         .length > 0
-                        ? `${
+                        ? `Projector: ${
                             stock.filter((item) => item.type === "Projector")
                               .length
-                          } ---Projector`
+                          }`
                         : ""}
                     </li>
                     <li style={{ listStyleType: "none", fontWeight: "700" }}>

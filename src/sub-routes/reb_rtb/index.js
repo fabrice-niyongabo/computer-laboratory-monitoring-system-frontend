@@ -8,7 +8,7 @@ const Profile = lazy(() => import("../../views/profile"));
 const Stock = lazy(() => import("../../views/reb_rtb/stock"));
 const Users = lazy(() => import("../../views/reb_rtb/users"));
 const AddPc = lazy(() => import("../../views/reb_rtb/addpc"));
-const DamagedStolens = lazy(() =>
+const DamagedPcs = lazy(() =>
   import("../../views/reb_rtb/reports/damaged-pcs")
 );
 const RepairedPcs = lazy(() =>
@@ -30,10 +30,10 @@ const routes = [
   { path: "/users", name: "Users", element: Users },
   { path: "/addpc", name: "Stock", element: AddPc },
   { path: "/damagedpcs", name: "DamagedPcs", element: DamagedPcs },
-  { path: "/repairedpcs", name: "DamagedPcs", element: RepairedPcs },
+  { path: "/repairedpcs", name: "RepairedPcs", element: RepairedPcs },
   { path: "/stolenpcs", name: "StolenPcs", element: StolenPcs },
   { path: "/archivedpcs", name: "ArchivedPcs", element: ArchivedPcs },
-  { path: "/workingpcs", name: "ArchivedPcs", element: WorkingPcs },
+  { path: "/workingpcs", name: "WorkingPcs", element: WorkingPcs },
   {
     path: "/notifications",
     name: "Notifications",

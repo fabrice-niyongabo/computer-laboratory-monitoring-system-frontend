@@ -102,7 +102,7 @@ const ArchivedPcs = () => {
                   />
                   <div>&nbsp; &nbsp;</div>
                   <Link
-                    to={`/printer/workingPc/?archievedDate=${dateFilter}&pcDetails__serialNumber=${keyWord}&description=${keyWord}&pcDetails__model=${keyWord}`}
+                    to={`/printer/workingPc/?receivedDate=${dateFilter}&pcDetails__serialNumber=${keyWord}&description=${keyWord}&pcDetails__model=${keyWord}`}
                     target="_blank"
                   >
                     <button className="btn btn-primary">Print</button>
@@ -121,7 +121,6 @@ const ArchivedPcs = () => {
                         <th>#</th>
                         <th>Serial Number</th>
                         <th>Date</th>
-                        <th>Description</th>
                         <th>Action</th>
                       </tr>
                     </thead>
@@ -133,7 +132,6 @@ const ArchivedPcs = () => {
                           <td>
                             {new Date(item.receivedDate).toLocaleDateString()}
                           </td>
-                          <td>{item.description}</td>
                           <td>
                             <button
                               className="btn btn-primary"
